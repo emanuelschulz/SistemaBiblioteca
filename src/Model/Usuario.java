@@ -10,5 +10,5 @@ package Model;
  * @author gabriel
  */
 public class Usuario {
-    String nome = "Gabriel";
+    String nome = "Gabriel ";
 }
