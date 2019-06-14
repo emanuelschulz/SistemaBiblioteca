@@ -9,6 +9,4 @@ package Model;
  *
  * @author gabriel
  */
-public class Usuario {
-    String nome = "Gabriel ";
-}
+public class Usuario {}
