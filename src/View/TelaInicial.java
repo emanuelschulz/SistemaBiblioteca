@@ -7,13 +7,15 @@ package View;
 
 import Control.ControleAutor;
 import Model.Autor;
+import java.awt.Component;
+import java.util.Date;
 
 /**
  *
  * @author Sirlei
  */
 public class TelaInicial extends javax.swing.JFrame {
-ControleAutor controleAut = new ControleAutor(); 
+ControleAutor controleAut = new ControleAutor();
     /**
      * Creates new form TelaInicial
      */
@@ -64,7 +66,6 @@ ControleAutor controleAut = new ControleAutor();
         jtfAutor = new javax.swing.JTextField();
         jbtSalvarAutor = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
-        jftfDataNascAutor = new javax.swing.JFormattedTextField();
         jpUsuario = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -398,12 +399,6 @@ ControleAutor controleAut = new ControleAutor();
             }
         });
 
-        try {
-            jftfDataNascAutor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         javax.swing.GroupLayout jpTelaAutoresLayout = new javax.swing.GroupLayout(jpTelaAutores);
         jpTelaAutores.setLayout(jpTelaAutoresLayout);
         jpTelaAutoresLayout.setHorizontalGroup(
@@ -415,31 +410,15 @@ ControleAutor controleAut = new ControleAutor();
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpTelaAutoresLayout.createSequentialGroup()
                         .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-<<<<<<< HEAD
-                            .addComponent(jSeparator6)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpTelaAutoresLayout.createSequentialGroup()
-                                .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
-                                    .addGroup(jpTelaAutoresLayout.createSequentialGroup()
-                                        .addComponent(jftfDataNascAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))))
-=======
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
                             .addGroup(jpTelaAutoresLayout.createSequentialGroup()
-                                .addComponent(jtfDataNasc)
-                                .addGap(18, 18, 18)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jbtSalvarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)))))
->>>>>>> master
                 .addContainerGap())
         );
         jpTelaAutoresLayout.setVerticalGroup(
@@ -454,21 +433,10 @@ ControleAutor controleAut = new ControleAutor();
                     .addComponent(jLabel4)
                     .addComponent(jtfAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-<<<<<<< HEAD
-                .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jftfDataNascAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
-                .addComponent(jbtSalvarAutor)
-                .addGap(30, 30, 30))
-=======
                 .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(jtfDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5)
                     .addComponent(jbtSalvarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(353, Short.MAX_VALUE))
->>>>>>> master
         );
 
         jtpBiblioteca.addTab("Cadastro Autores", jpTelaAutores);
@@ -568,7 +536,7 @@ ControleAutor controleAut = new ControleAutor();
         jpUsuarioLayout.setHorizontalGroup(
             jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpUsuarioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addGroup(jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jpUsuarioLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -608,7 +576,7 @@ ControleAutor controleAut = new ControleAutor();
                         .addGap(18, 18, 18)
                         .addComponent(jtfEmail))
                     .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
             .addGroup(jpUsuarioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbtVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -967,9 +935,8 @@ ControleAutor controleAut = new ControleAutor();
     }//GEN-LAST:event_jbtPesquisarActionPerformed
 
     private void jbtSalvarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalvarAutorActionPerformed
-        Autor aut = new Autor(0, (Date) jftfDataNascAutor.getValue(), jtfAutor.getText(), "" , true);
-        controleAut.cadastrarAutor(aut);
-        
+      
+
     }//GEN-LAST:event_jbtSalvarAutorActionPerformed
 
     /**
@@ -979,7 +946,7 @@ ControleAutor controleAut = new ControleAutor();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1056,7 +1023,6 @@ ControleAutor controleAut = new ControleAutor();
     private javax.swing.JButton jbtSalvarCadUsuario;
     private javax.swing.JButton jbtSalvarExemp;
     private javax.swing.JButton jbtVoltar;
-    private javax.swing.JFormattedTextField jftfDataNascAutor;
     private javax.swing.JList<String> jlstAutoresSelet;
     private javax.swing.JPanel jpTelaAutores;
     private javax.swing.JPanel jpTelaEmprestimo;
