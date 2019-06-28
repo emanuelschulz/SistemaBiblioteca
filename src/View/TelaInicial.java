@@ -106,7 +106,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jtbAutorEmail = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jlstAutoresSelet = new javax.swing.JList<String>();
+        jlstAutoresSelet = new javax.swing.JList<>();
         jLabel23 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator1 = new javax.swing.JSeparator();
