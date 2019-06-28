@@ -54,14 +54,6 @@ public class TelaInicial extends javax.swing.JFrame {
         jtResultadoExemp = new javax.swing.JTable();
         jbtSalvarExemp = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
-        jpTelaLogin = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jbtEnter = new javax.swing.JButton();
-        jtfLog = new javax.swing.JTextField();
-        jtfSenha = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
         jpTelaAutores = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -114,7 +106,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jtbAutorEmail = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jlstAutoresSelet = new javax.swing.JList<>();
+        jlstAutoresSelet = new javax.swing.JList<String>();
         jLabel23 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator1 = new javax.swing.JSeparator();
@@ -380,70 +372,6 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jtpBiblioteca.addTab("Cadastro De Exemplares", jpTelaExemplares);
 
-        jLabel31.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel31.setText("LOGIN");
-
-        jLabel32.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel32.setText("LOGIN:");
-
-        jLabel33.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel33.setText("SENHA:");
-
-        jbtEnter.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jbtEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/biblioteca_guido/imagem/enter65x65.png"))); // NOI18N
-
-        javax.swing.GroupLayout jpTelaLoginLayout = new javax.swing.GroupLayout(jpTelaLogin);
-        jpTelaLogin.setLayout(jpTelaLoginLayout);
-        jpTelaLoginLayout.setHorizontalGroup(
-            jpTelaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpTelaLoginLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jpTelaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpTelaLoginLayout.createSequentialGroup()
-                        .addComponent(jSeparator5)
-                        .addContainerGap())
-                    .addGroup(jpTelaLoginLayout.createSequentialGroup()
-                        .addGroup(jpTelaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpTelaLoginLayout.createSequentialGroup()
-                                .addComponent(jLabel32)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtfLog))
-                            .addGroup(jpTelaLoginLayout.createSequentialGroup()
-                                .addGroup(jpTelaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel31)
-                                    .addGroup(jpTelaLoginLayout.createSequentialGroup()
-                                        .addComponent(jLabel33)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 545, Short.MAX_VALUE)))
-                        .addGap(10, 10, 10))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTelaLoginLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbtEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jpTelaLoginLayout.setVerticalGroup(
-            jpTelaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpTelaLoginLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel31)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(jpTelaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel32)
-                    .addComponent(jtfLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jpTelaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33)
-                    .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
-                .addComponent(jbtEnter)
-                .addGap(30, 30, 30))
-        );
-
-        jtpBiblioteca.addTab("Login", jpTelaLogin);
-
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setText("CADASTRO DE AUTORES");
 
@@ -583,13 +511,13 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
         jrbDocente.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                jrbDocenteAncestorMoved(evt);
+            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 jrbDocenteAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-                jrbDocenteAncestorMoved(evt);
             }
         });
         jrbDocente.addActionListener(new java.awt.event.ActionListener() {
@@ -1059,9 +987,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1076,12 +1001,10 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JButton jbtAdicionar;
     private javax.swing.JButton jbtAvancar;
-    private javax.swing.JButton jbtEnter;
     private javax.swing.JButton jbtPesquisar;
     private javax.swing.JButton jbtPesquisarTitulo;
     private javax.swing.JButton jbtSalvar;
@@ -1095,7 +1018,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JPanel jpTelaEmprestimo;
     private javax.swing.JPanel jpTelaExemplares;
     private javax.swing.JPanel jpTelaLivros;
-    private javax.swing.JPanel jpTelaLogin;
     private javax.swing.JPanel jpTelaPrincipal;
     private javax.swing.JPanel jpUsuario;
     private javax.swing.JRadioButton jrbDiscente;
@@ -1120,10 +1042,8 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JTextField jtfEndereco;
     private javax.swing.JTextField jtfGenero;
     private javax.swing.JTextField jtfISBN;
-    private javax.swing.JTextField jtfLog;
     private javax.swing.JTextField jtfNomeUsuario;
     private javax.swing.JTextField jtfNumPaginas;
-    private javax.swing.JTextField jtfSenha;
     private javax.swing.JTextField jtfTelefone;
     private javax.swing.JTextField jtfTitilo;
     private javax.swing.JTextField jtfTitulo;
