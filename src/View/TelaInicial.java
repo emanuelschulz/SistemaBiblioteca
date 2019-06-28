@@ -5,12 +5,15 @@
  */
 package View;
 
+import Control.ControleAutor;
+import Model.Autor;
+
 /**
  *
  * @author Sirlei
  */
 public class TelaInicial extends javax.swing.JFrame {
-
+ControleAutor controleAut = new ControleAutor(); 
     /**
      * Creates new form TelaInicial
      */
@@ -59,9 +62,9 @@ public class TelaInicial extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jtfAutor = new javax.swing.JTextField();
-        jtfDataNasc = new javax.swing.JTextField();
         jbtSalvarAutor = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
+        jftfDataNascAutor = new javax.swing.JFormattedTextField();
         jpUsuario = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -389,6 +392,17 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jbtSalvarAutor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jbtSalvarAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/biblioteca_guido/imagem/salvar65x65.png"))); // NOI18N
+        jbtSalvarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtSalvarAutorActionPerformed(evt);
+            }
+        });
+
+        try {
+            jftfDataNascAutor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jpTelaAutoresLayout = new javax.swing.GroupLayout(jpTelaAutores);
         jpTelaAutores.setLayout(jpTelaAutoresLayout);
@@ -401,6 +415,20 @@ public class TelaInicial extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpTelaAutoresLayout.createSequentialGroup()
                         .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+<<<<<<< HEAD
+                            .addComponent(jSeparator6)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpTelaAutoresLayout.createSequentialGroup()
+                                .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+                                    .addGroup(jpTelaAutoresLayout.createSequentialGroup()
+                                        .addComponent(jftfDataNascAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))))
+=======
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addGap(18, 18, 18)
@@ -411,6 +439,7 @@ public class TelaInicial extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jbtSalvarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)))))
+>>>>>>> master
                 .addContainerGap())
         );
         jpTelaAutoresLayout.setVerticalGroup(
@@ -425,12 +454,21 @@ public class TelaInicial extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jtfAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+<<<<<<< HEAD
+                .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jftfDataNascAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                .addComponent(jbtSalvarAutor)
+                .addGap(30, 30, 30))
+=======
                 .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
                         .addComponent(jtfDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jbtSalvarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(353, Short.MAX_VALUE))
+>>>>>>> master
         );
 
         jtpBiblioteca.addTab("Cadastro Autores", jpTelaAutores);
@@ -530,7 +568,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jpUsuarioLayout.setHorizontalGroup(
             jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpUsuarioLayout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jpUsuarioLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -570,7 +608,7 @@ public class TelaInicial extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jtfEmail))
                     .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jpUsuarioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbtVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -928,6 +966,12 @@ public class TelaInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtPesquisarActionPerformed
 
+    private void jbtSalvarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalvarAutorActionPerformed
+        Autor aut = new Autor(0, (Date) jftfDataNascAutor.getValue(), jtfAutor.getText(), "" , true);
+        controleAut.cadastrarAutor(aut);
+        
+    }//GEN-LAST:event_jbtSalvarAutorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1012,6 +1056,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton jbtSalvarCadUsuario;
     private javax.swing.JButton jbtSalvarExemp;
     private javax.swing.JButton jbtVoltar;
+    private javax.swing.JFormattedTextField jftfDataNascAutor;
     private javax.swing.JList<String> jlstAutoresSelet;
     private javax.swing.JPanel jpTelaAutores;
     private javax.swing.JPanel jpTelaEmprestimo;
@@ -1034,7 +1079,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JTextField jtfCPF;
     private javax.swing.JTextField jtfCadUsuario;
     private javax.swing.JTextField jtfCodUsuario;
-    private javax.swing.JTextField jtfDataNasc;
     private javax.swing.JTextField jtfEdicao;
     private javax.swing.JTextField jtfEditora;
     private javax.swing.JTextField jtfEmail;
