@@ -14,8 +14,11 @@ public class Usuario {
     private String endereco;
     private Date suspencao;
     private boolean status;
+    private String senha;
 
-    public Usuario(int Id_usuario, String nome, String email, String tipo_usuario, String cpf, String telefone, Date data_nasc, String endereco, Date suspencao, boolean status) {
+    
+
+    public Usuario(int Id_usuario, String nome, String email, String tipo_usuario, String cpf, String telefone, Date data_nasc, String endereco, Date suspencao, boolean status, String senha) {
         this.Id_usuario = Id_usuario;
         this.nome = nome;
         this.email = email;
@@ -26,6 +29,7 @@ public class Usuario {
         this.endereco = endereco;
         this.suspencao = suspencao;
         this.status = status;
+        this.senha = senha;
     }
 
     public int getId_usuario() {
@@ -106,6 +110,14 @@ public class Usuario {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+    
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
     
 
