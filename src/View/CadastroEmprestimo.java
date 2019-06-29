@@ -38,6 +38,7 @@ public class CadastroEmprestimo extends javax.swing.JFrame {
         jtResultadoPesquisa = new javax.swing.JTable();
         jbtSalvar = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
+        jbtnFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("jfCadEmprestimo"); // NOI18N
@@ -89,6 +90,13 @@ public class CadastroEmprestimo extends javax.swing.JFrame {
         jbtSalvar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jbtSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/biblioteca_guido/imagem/salvar65x65.png"))); // NOI18N
 
+        jbtnFechar.setText("Fechar");
+        jbtnFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnFecharActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpTelaEmprestimoLayout = new javax.swing.GroupLayout(jpTelaEmprestimo);
         jpTelaEmprestimo.setLayout(jpTelaEmprestimoLayout);
         jpTelaEmprestimoLayout.setHorizontalGroup(
@@ -97,6 +105,8 @@ public class CadastroEmprestimo extends javax.swing.JFrame {
                 .addGroup(jpTelaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTelaEmprestimoLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jbtnFechar)
+                        .addGap(131, 131, 131)
                         .addComponent(jbtSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpTelaEmprestimoLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -129,24 +139,30 @@ public class CadastroEmprestimo extends javax.swing.JFrame {
             .addGroup(jpTelaEmprestimoLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel7)
-                .addGap(6, 6, 6)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
                 .addGroup(jpTelaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addGroup(jpTelaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jpTelaEmprestimoLayout.createSequentialGroup()
-                            .addComponent(jtfNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jpTelaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jsNumeroExemplares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel9)))
-                        .addComponent(jbtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(jbtSalvar)
-                .addGap(30, 30, 30))
+                    .addGroup(jpTelaEmprestimoLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addGroup(jpTelaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addGroup(jpTelaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jpTelaEmprestimoLayout.createSequentialGroup()
+                                    .addComponent(jtfNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jpTelaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jsNumeroExemplares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel9)))
+                                .addComponent(jbtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(46, 46, 46)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addComponent(jbtSalvar)
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTelaEmprestimoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtnFechar)
+                        .addGap(51, 51, 51))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,6 +192,11 @@ public class CadastroEmprestimo extends javax.swing.JFrame {
     private void jbtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtPesquisarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtPesquisarActionPerformed
+
+    private void jbtnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnFecharActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jbtnFecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,6 +248,7 @@ public class CadastroEmprestimo extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JButton jbtPesquisar;
     private javax.swing.JButton jbtSalvar;
+    private javax.swing.JButton jbtnFechar;
     private javax.swing.JPanel jpTelaEmprestimo;
     private javax.swing.JSpinner jsNumeroExemplares;
     private javax.swing.JTable jtResultadoPesquisa;

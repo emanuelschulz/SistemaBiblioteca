@@ -64,6 +64,7 @@ public class CadastroLivros extends javax.swing.JFrame {
         jcbOnline = new javax.swing.JCheckBox();
         jcbBraile = new javax.swing.JCheckBox();
         jLabel18 = new javax.swing.JLabel();
+        jbtnFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,6 +187,13 @@ public class CadastroLivros extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel18.setText("SUBTITULO:");
 
+        jbtnFechar.setText("fechar");
+        jbtnFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnFecharActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpTelaLivrosLayout = new javax.swing.GroupLayout(jpTelaLivros);
         jpTelaLivros.setLayout(jpTelaLivrosLayout);
         jpTelaLivrosLayout.setHorizontalGroup(
@@ -248,12 +256,15 @@ public class CadastroLivros extends javax.swing.JFrame {
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTelaLivrosLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTelaLivrosLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jbtSalvarCadLivros, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTelaLivrosLayout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTelaLivrosLayout.createSequentialGroup()
+                                .addComponent(jbtnFechar)
+                                .addGap(55, 55, 55)
+                                .addComponent(jbtSalvarCadLivros, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(6, 6, 6))
             .addGroup(jpTelaLivrosLayout.createSequentialGroup()
                 .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +287,7 @@ public class CadastroLivros extends javax.swing.JFrame {
                 .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpTelaLivrosLayout.createSequentialGroup()
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 17, Short.MAX_VALUE))
                     .addGroup(jpTelaLivrosLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,7 +351,9 @@ public class CadastroLivros extends javax.swing.JFrame {
                                 .addGap(3, 3, 3)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
-                                .addComponent(jbtSalvarCadLivros)
+                                .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jbtSalvarCadLivros)
+                                    .addComponent(jbtnFechar))
                                 .addContainerGap())))))
         );
 
@@ -360,9 +373,9 @@ public class CadastroLivros extends javax.swing.JFrame {
             .addGap(0, 586, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 20, Short.MAX_VALUE)
                     .addComponent(jpTelaLivros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 21, Short.MAX_VALUE)))
         );
 
         pack();
@@ -375,7 +388,7 @@ public class CadastroLivros extends javax.swing.JFrame {
     private void jbtSalvarCadLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalvarCadLivrosActionPerformed
        int editora = (int) jtbEditora.getValueAt(0, jtbEditora.getSelectedRow());
         
-        Livro livr = new Livro (0, jtfTitulo.getText(), jtfSubtitulo.getText(), jtfISBN.getText(), jcbOnline.isSelected(), jcbBraile.isSelected(), jtfGenero.getText(), Integer.parseInt(jtfNumPaginas.getText()), editora, true);
+        Livro livro = new Livro (0, jtfTitulo.getText(), jtfSubtitulo.getText(), jtfISBN.getText(), jcbOnline.isSelected(), jcbBraile.isSelected(), jtfGenero.getText(), Integer.parseInt(jtfNumPaginas.getText()), editora, true);
         
         
     }//GEN-LAST:event_jbtSalvarCadLivrosActionPerformed
@@ -384,40 +397,44 @@ public class CadastroLivros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfSubtituloActionPerformed
 
+    private void jbtnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnFecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbtnFecharActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastroLivros().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(CadastroLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(CadastroLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(CadastroLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(CadastroLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new CadastroLivros().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel12;
@@ -439,6 +456,7 @@ public class CadastroLivros extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton jbtAdicionar;
     private javax.swing.JButton jbtSalvarCadLivros;
+    private javax.swing.JButton jbtnFechar;
     private javax.swing.JCheckBox jcbBraile;
     private javax.swing.JCheckBox jcbOnline;
     private javax.swing.JList<String> jlstAutoresSelet;

@@ -57,6 +57,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jButton3.setText("CADASTRO EXEMPLARES");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("CADASTRO LIVROS");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -66,8 +71,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         jButton5.setText("CADASTRO USUÁRIOS");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("PESQUISAR LIVRO");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("PESQUISAR USUÁRIO");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -135,21 +150,45 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        CadastroEmprestimo cadEmprestimo = new CadastroEmprestimo();
+        cadEmprestimo.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        CadastroLivros cadLivros = new CadastroLivros();
+        cadLivros.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        PesquisarUsuario pesquisaUsuario = new PesquisarUsuario();
+        pesquisaUsuario.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jbtCadAutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCadAutActionPerformed
         // TODO add your handling code here:
         CadastroAutores cadAut = new CadastroAutores();
-        this.jbtCadAut.setVisible(true);
+        cadAut.setVisible(true);
     }//GEN-LAST:event_jbtCadAutActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        CadastroExemplares cadExemplar = new CadastroExemplares();
+        cadExemplar.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        CadastroUsuario cadUsuario = new CadastroUsuario();
+        cadUsuario.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        PesquisaLivro pesquisaLivro = new PesquisaLivro();
+        pesquisaLivro.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

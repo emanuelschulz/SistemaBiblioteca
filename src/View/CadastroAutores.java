@@ -33,6 +33,7 @@ public class CadastroAutores extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jbtSalvarAutor = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jbtnFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("jfCadAutores"); // NOI18N
@@ -60,6 +61,13 @@ public class CadastroAutores extends javax.swing.JFrame {
             }
         });
 
+        jbtnFechar.setText("fechar");
+        jbtnFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnFecharActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,6 +87,10 @@ public class CadastroAutores extends javax.swing.JFrame {
                         .addGap(65, 65, 65)
                         .addComponent(jbtSalvarAutor)))
                 .addContainerGap(145, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbtnFechar)
+                .addGap(131, 131, 131))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +108,9 @@ public class CadastroAutores extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jbtSalvarAutor))
-                .addContainerGap(375, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(jbtnFechar)
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -110,6 +124,12 @@ public class CadastroAutores extends javax.swing.JFrame {
     private void jtfAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfAutorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfAutorActionPerformed
+
+    private void jbtnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnFecharActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        
+    }//GEN-LAST:event_jbtnFecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,6 +172,7 @@ public class CadastroAutores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbtSalvarAutor;
+    private javax.swing.JButton jbtnFechar;
     private javax.swing.JTextField jtfAutor;
     // End of variables declaration//GEN-END:variables
 }
