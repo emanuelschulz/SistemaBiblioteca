@@ -32,7 +32,7 @@
       </Group>
     </DimensionLayout>
   </Layout>
-<<<<<<< Updated upstream
+
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -1274,6 +1274,4 @@
       </SubComponents>
     </Container>
   </SubComponents>
-=======
->>>>>>> Stashed changes
 </Form>
