@@ -9,12 +9,12 @@ package View;
  *
  * @author Sirlei
  */
-public class CadastroEmprestimo extends javax.swing.JFrame {
+public class CadastroEmprestimos extends javax.swing.JFrame {
 
     /**
-     * Creates new form CadastroEmprestimo
+     * Creates new form CadastroEmprestimos
      */
-    public CadastroEmprestimo() {
+    public CadastroEmprestimos() {
         initComponents();
     }
 
@@ -201,6 +201,12 @@ public class CadastroEmprestimo extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(CadastroEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
