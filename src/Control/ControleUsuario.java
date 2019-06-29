@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import Model.Usuario;
 import java.sql.Date;
 
-
+//Ta errado
 public class ControleUsuario {
     public boolean cadastrarUsuario(Usuario usuario){
         String sql = "insert into Usuarios"
