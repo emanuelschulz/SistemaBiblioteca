@@ -1,6 +1,6 @@
 package Model;
 
-public class Editora {
+public class EditoraModelo {
 
     private int Id_editora;
     private String nome;
@@ -10,7 +10,7 @@ public class Editora {
     private String ano_da_edicao;
     private boolean status;
 
-    public Editora(int Id_editora, String nome, String lougradouro, String telefone, String site, String ano_da_edicao, boolean status) {
+    public EditoraModelo(int Id_editora, String nome, String lougradouro, String telefone, String site, String ano_da_edicao, boolean status) {
         this.Id_editora = Id_editora;
         this.nome = nome;
         this.lougradouro = lougradouro;
@@ -19,6 +19,10 @@ public class Editora {
         this.ano_da_edicao = ano_da_edicao;
         this.status = status;
     }
+
+
+
+
 
     public int getId_editora() {
         return Id_editora;
