@@ -5,12 +5,17 @@
  */
 package View;
 
+import Control.ControleAutor;
+import Model.Autor;
+import java.awt.Component;
+import java.util.Date;
+
 /**
  *
  * @author Sirlei
  */
 public class TelaInicial extends javax.swing.JFrame {
-
+ControleAutor controleAut = new ControleAutor();
     /**
      * Creates new form TelaInicial
      */
@@ -59,7 +64,6 @@ public class TelaInicial extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jtfAutor = new javax.swing.JTextField();
-        jtfDataNasc = new javax.swing.JTextField();
         jbtSalvarAutor = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
         jpUsuario = new javax.swing.JPanel();
@@ -389,6 +393,11 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jbtSalvarAutor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jbtSalvarAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/biblioteca_guido/imagem/salvar65x65.png"))); // NOI18N
+        jbtSalvarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtSalvarAutorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpTelaAutoresLayout = new javax.swing.GroupLayout(jpTelaAutores);
         jpTelaAutores.setLayout(jpTelaAutoresLayout);
@@ -407,8 +416,7 @@ public class TelaInicial extends javax.swing.JFrame {
                         .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfAutor, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
                             .addGroup(jpTelaAutoresLayout.createSequentialGroup()
-                                .addComponent(jtfDataNasc)
-                                .addGap(18, 18, 18)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jbtSalvarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)))))
                 .addContainerGap())
@@ -426,9 +434,7 @@ public class TelaInicial extends javax.swing.JFrame {
                     .addComponent(jtfAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpTelaAutoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(jtfDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5)
                     .addComponent(jbtSalvarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(353, Short.MAX_VALUE))
         );
@@ -928,6 +934,11 @@ public class TelaInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtPesquisarActionPerformed
 
+    private void jbtSalvarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalvarAutorActionPerformed
+      
+
+    }//GEN-LAST:event_jbtSalvarAutorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -935,7 +946,7 @@ public class TelaInicial extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1034,7 +1045,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JTextField jtfCPF;
     private javax.swing.JTextField jtfCadUsuario;
     private javax.swing.JTextField jtfCodUsuario;
-    private javax.swing.JTextField jtfDataNasc;
     private javax.swing.JTextField jtfEdicao;
     private javax.swing.JTextField jtfEditora;
     private javax.swing.JTextField jtfEmail;
