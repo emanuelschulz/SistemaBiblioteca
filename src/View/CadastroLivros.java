@@ -61,6 +61,8 @@ public class CadastroLivros extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jpTelaLivros.setName("jfCadLivros"); // NOI18N
+
         jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel12.setText("CADASTRO DE LIVROS");
 

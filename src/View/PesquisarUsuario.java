@@ -36,6 +36,7 @@ public class PesquisarUsuario extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setName("jfPesqUSUARIOS"); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("PESQUISAR USUÁRIO");
@@ -108,8 +109,6 @@ public class PesquisarUsuario extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(30, 30, 30))
         );
-
-        jLabel1.getAccessibleContext().setAccessibleName("PESQUISAR USUÁRIO");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

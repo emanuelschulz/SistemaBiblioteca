@@ -48,6 +48,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jpTelaLivros">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="jfCadLivros" noResource="true"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">

@@ -41,6 +41,8 @@ public class CadastroExemplares extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jpTelaExemplares.setName("jfCadExemplares"); // NOI18N
+
         jLabel9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel9.setText("CADASTRO DE EXEMPLARES");
 
