@@ -18,6 +18,10 @@ public class Autor {
         this.status = status;
     }
 
+    public Autor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getId_autor() {
         return Id_autor;
     }
@@ -26,8 +30,8 @@ public class Autor {
         this.Id_autor = Id_autor;
     }
 
-    public Date getAno_nasc() {
-        return ano_nasc;
+    public Date getAnoNasc() {
+        return this.ano_nasc;
     }
 
     public void setAno_nasc(Date ano_nasc) {

@@ -2,6 +2,7 @@ package Control;
 
 import Model.Autor;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +27,7 @@ public class ControleAutor {
             PreparedStatement comando = conexao.prepareStatement(sql);
 
             comando.setString(1, autor.getNome());
-            comando.setDate(2, autor.getAno_nasc());
+            comando.setDate(2, (Date) autor.getAnoNasc());
             comando.setBoolean(3, autor.isStatus());
 
             comando.executeUpdate();
@@ -46,7 +47,7 @@ public class ControleAutor {
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, autor.getNome());
-            comando.setDate(2, autor.getAno_nasc());
+            comando.setDate(2, (Date) autor.getAnoNasc());
             comando.setBoolean(3, autor.isStatus());
 
             comando.executeUpdate();
