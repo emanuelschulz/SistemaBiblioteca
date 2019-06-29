@@ -5,6 +5,8 @@
  */
 package View;
 
+import Model.Livro;
+
 /**
  *
  * @author Sirlei
@@ -34,7 +36,6 @@ public class CadastroLivros extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -44,7 +45,6 @@ public class CadastroLivros extends javax.swing.JFrame {
         jtfISBN = new javax.swing.JTextField();
         jtfTitulo = new javax.swing.JTextField();
         jtfEdicao = new javax.swing.JTextField();
-        jtfEditora = new javax.swing.JTextField();
         jtfAcervo = new javax.swing.JTextField();
         jtfGenero = new javax.swing.JTextField();
         jtfAno = new javax.swing.JTextField();
@@ -58,6 +58,12 @@ public class CadastroLivros extends javax.swing.JFrame {
         jbtSalvarCadLivros = new javax.swing.JButton();
         jtfNumPaginas = new javax.swing.JTextField();
         jbtAdicionar = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jtbEditora = new javax.swing.JTable();
+        jtfSubtitulo = new javax.swing.JTextField();
+        jcbOnline = new javax.swing.JCheckBox();
+        jcbBraile = new javax.swing.JCheckBox();
+        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,9 +84,6 @@ public class CadastroLivros extends javax.swing.JFrame {
 
         jLabel17.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel17.setText("Nº PÁGINAS:");
-
-        jLabel18.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel18.setText("EDITORA:");
 
         jLabel19.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel19.setText("ACERVO:");
@@ -112,11 +115,11 @@ public class CadastroLivros extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "AUTOR", "EMAIL"
+                "ID", "AUTOR"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -143,6 +146,44 @@ public class CadastroLivros extends javax.swing.JFrame {
         jbtAdicionar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jbtAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/biblioteca_guido/imagem/add65x65.png"))); // NOI18N
 
+        jtbEditora.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "ID", "EDITORA"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(jtbEditora);
+
+        jtfSubtitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfSubtituloActionPerformed(evt);
+            }
+        });
+
+        jcbOnline.setText("Online?");
+
+        jcbBraile.setText("Braile?");
+
+        jLabel18.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel18.setText("SUBTITULO:");
+
         javax.swing.GroupLayout jpTelaLivrosLayout = new javax.swing.GroupLayout(jpTelaLivros);
         jpTelaLivros.setLayout(jpTelaLivrosLayout);
         jpTelaLivrosLayout.setHorizontalGroup(
@@ -156,14 +197,18 @@ public class CadastroLivros extends javax.swing.JFrame {
                                 .addComponent(jLabel22))
                             .addGroup(jpTelaLivrosLayout.createSequentialGroup()
                                 .addGap(88, 88, 88)
-                                .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jbtAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jpTelaLivrosLayout.createSequentialGroup()
-                                        .addComponent(jLabel21)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jtfCDU, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jsNumAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(jLabel21)
+                                .addGap(18, 18, 18)
+                                .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfCDU, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jsNumAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTelaLivrosLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jcbOnline)
+                                    .addComponent(jcbBraile))
+                                .addGap(57, 57, 57)
+                                .addComponent(jbtAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jpTelaLivrosLayout.createSequentialGroup()
                         .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -177,34 +222,35 @@ public class CadastroLivros extends javax.swing.JFrame {
                                 .addComponent(jtfGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jpTelaLivrosLayout.createSequentialGroup()
                                 .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel18)
                                     .addComponent(jLabel17)
                                     .addComponent(jLabel16)
-                                    .addComponent(jLabel15)
                                     .addComponent(jLabel14)
-                                    .addComponent(jLabel13))
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel15))
                                 .addGap(18, 18, 18)
                                 .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtfNumPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtfEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfAno, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jtfISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfAno, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(38, 38, 38)))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpTelaLivrosLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(8, 8, 8)
                         .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jpTelaLivrosLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel23)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabel23)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTelaLivrosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTelaLivrosLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addComponent(jbtSalvarCadLivros, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6))
             .addGroup(jpTelaLivrosLayout.createSequentialGroup()
@@ -228,19 +274,10 @@ public class CadastroLivros extends javax.swing.JFrame {
                 .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpTelaLivrosLayout.createSequentialGroup()
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 24, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jpTelaLivrosLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpTelaLivrosLayout.createSequentialGroup()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)
-                                .addComponent(jLabel23)
-                                .addGap(3, 3, 3)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(jbtSalvarCadLivros)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jpTelaLivrosLayout.createSequentialGroup()
                                 .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jtfISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,23 +286,23 @@ public class CadastroLivros extends javax.swing.JFrame {
                                 .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jtfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel14))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jtfSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel18))
                                 .addGap(10, 10, 10)
-                                .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtfAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10)
-                                .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jtfEdicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel16))
                                 .addGap(10, 10, 10)
                                 .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jtfNumPaginas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10)
+                                .addGap(6, 6, 6)
                                 .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jtfEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jtfAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jtfAcervo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel19))
@@ -281,16 +318,35 @@ public class CadastroLivros extends javax.swing.JFrame {
                                 .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jsNumAutores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel22))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbtAdicionar)
-                                .addGap(46, 46, 46))))))
+                                .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jpTelaLivrosLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jbtAdicionar)
+                                        .addGap(46, 46, 46))
+                                    .addGroup(jpTelaLivrosLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jcbOnline)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jcbBraile)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(jpTelaLivrosLayout.createSequentialGroup()
+                                .addGroup(jpTelaLivrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel23)
+                                .addGap(3, 3, 3)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(jbtSalvarCadLivros)
+                                .addContainerGap())))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 850, Short.MAX_VALUE)
+            .addGap(0, 854, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -299,7 +355,7 @@ public class CadastroLivros extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 562, Short.MAX_VALUE)
+            .addGap(0, 586, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -315,8 +371,16 @@ public class CadastroLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfTituloActionPerformed
 
     private void jbtSalvarCadLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalvarCadLivrosActionPerformed
-        // TODO add your handling code here:
+       int editora = (int) jtbEditora.getValueAt(0, jtbEditora.getSelectedRow());
+        
+        Livro livr = new Livro (0, jtfTitulo.getText(), jtfSubtitulo.getText(), jtfISBN.getText(), jcbOnline.isSelected(), jcbBraile.isSelected(), jtfGenero.getText(), Integer.parseInt(jtfNumPaginas.getText()), editora, true);
+        
+        
     }//GEN-LAST:event_jbtSalvarCadLivrosActionPerformed
+
+    private void jtfSubtituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSubtituloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfSubtituloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,22 +432,26 @@ public class CadastroLivros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton jbtAdicionar;
     private javax.swing.JButton jbtSalvarCadLivros;
+    private javax.swing.JCheckBox jcbBraile;
+    private javax.swing.JCheckBox jcbOnline;
     private javax.swing.JList<String> jlstAutoresSelet;
     private javax.swing.JPanel jpTelaLivros;
     private javax.swing.JSpinner jsNumAutores;
     private javax.swing.JTable jtbAutorEmail;
+    private javax.swing.JTable jtbEditora;
     private javax.swing.JTextField jtfAcervo;
     private javax.swing.JTextField jtfAno;
     private javax.swing.JTextField jtfCDU;
     private javax.swing.JTextField jtfEdicao;
-    private javax.swing.JTextField jtfEditora;
     private javax.swing.JTextField jtfGenero;
     private javax.swing.JTextField jtfISBN;
     private javax.swing.JTextField jtfNumPaginas;
+    private javax.swing.JTextField jtfSubtitulo;
     private javax.swing.JTextField jtfTitulo;
     // End of variables declaration//GEN-END:variables
 }

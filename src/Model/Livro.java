@@ -16,7 +16,7 @@ public class Livro {
     private int edicao;
     private int ano;
 
-    public Livro(int Id_livro, String titulo, String subTitulo, String isbn, boolean online, boolean braile, String classificaçao, int numero_de_paginas, int id_editora, boolean status) {
+    public Livro(int Id_livro, String titulo, String subTitulo, String isbn, boolean online, boolean braile, String classificacao, int numero_de_paginas, int id_editora, boolean status) {
         this.Id_livro = Id_livro;
         this.titulo = titulo;
         this.subTitulo = subTitulo;
