@@ -110,16 +110,15 @@ return true;
 
             while (resultado.next()) {
 
-                EditoraModelo editora = new EditoraModelo();
+                EditoraModelo editorra = new EditoraModelo();
 
-                editora.setId_produtos(resultado.getInt("id_produtos"));
-                editora.setNome(resultado.getString("nome"));
-                editora.setDescricao(resultado.getString("descricao"));
-                editora.setQuantidade(resultado.getInt("quantidade"));
-                editora.setUnidade(resultado.getString("unidade"));
-                editora.setPreco(resultado.getFloat("preco"));
+                editorra.setId_editora(resultado.getInt("Id_editora"));
+                editorra.setNome(resultado.getString("nome"));
+               editorra.setLougradouro(resultado.getString("lougradouro"));
+                editorra.setTelefone(resultado.getString("telefone"));
+                editorra.setSite(resultado.getString("site"));
+                editorra.setAno_da_edicao(resultado.getString("ano_da_edicao"));
 
-                editora.add(editora);
             }
 
         } catch (Exception ex) {
