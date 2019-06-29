@@ -11,7 +11,12 @@ import java.util.ArrayList;
 
 public class ControleAutor {
 
-    private  Connection conexao = DB.connection();
+  
+    private final Connection conexao;
+
+    public ControleAutor() throws SQLException {
+        this.conexao = DB.connection();
+    }
 
     public boolean gravarAutor(AutorModelo autor) {
         if (autor.getId_autor() > 0) {
