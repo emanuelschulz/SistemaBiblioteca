@@ -7,14 +7,16 @@ public class Livro {
     private String titulo;
     private String subTitulo;
     private String isbn;
-    private String online;
-    private String braile;
+    private boolean online;
+    private boolean braile;
     private String classificaçao;
     private int numero_de_paginas;
     private int id_editora;
     private boolean status;
+    private int edicao;
+    private int ano;
 
-    public Livro(int Id_livro, String titulo, String subTitulo, String isbn, String online, String braile, String classificaçao, int numero_de_paginas, int id_editora, boolean status) {
+    public Livro(int Id_livro, String titulo, String subTitulo, String isbn, boolean online, boolean braile, String classificacao, int numero_de_paginas, int id_editora, boolean status) {
         this.Id_livro = Id_livro;
         this.titulo = titulo;
         this.subTitulo = subTitulo;
@@ -25,6 +27,22 @@ public class Livro {
         this.numero_de_paginas = numero_de_paginas;
         this.id_editora = id_editora;
         this.status = status;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public int getEdicao() {
+        return edicao;
+    }
+
+    public void setEdicao(int edicao) {
+        this.edicao = edicao;
     }
 
     public int getId_livro() {
@@ -59,19 +77,19 @@ public class Livro {
         this.isbn = isbn;
     }
 
-    public String getOnline() {
+    public boolean getOnline() {
         return online;
     }
 
-    public void setOnline(String online) {
+    public void setOnline(boolean online) {
         this.online = online;
     }
 
-    public String getBraile() {
+    public boolean getBraile() {
         return braile;
     }
 
-    public void setBraile(String braile) {
+    public void setBraile(boolean braile) {
         this.braile = braile;
     }
 
