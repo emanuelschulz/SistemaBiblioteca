@@ -2,6 +2,8 @@ package Control;
 
 import Model.Livro;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class ControleLivro {
 
@@ -26,14 +28,62 @@ public class ControleLivro {
         }
     }
 
-    public void pesquisarLivroPorNome(String nome) {
+    public ArrayList<Livro> pesquisarLivroPorNome(String nome) {
+        ArrayList<Livro> pesq = new ArrayList<>(); 
+        
         String sql = "Select * from livro where nome like ?%";
         try {
             PreparedStatement comando = DB.connection().prepareStatement(sql);
             comando.setString(1, nome);
-            comando.executeUpdate();
+            ResultSet resultado = comando.executeQuery();
+            while (resultado.next()) {                
+                Livro liv = new Livro(resultado.getInt("id"), resultado.getString("titulo"), resultado.getString("subtitulo"), resultado.getString("isbn"), resultado.getBoolean("online"), resultado.getBoolean("braile"), resultado.getString("genero"), resultado.getInt("paginas"), resultado.getInt("editora"), resultado.getBoolean("Status"));
+                pesq.add(liv);
+            }
+            
+            return pesq;
         } catch (Exception e) {
             System.out.println("deu erro");
+            return null;
         }
     }
+    
+    public ArrayList<Livro> getTudo() {
+        ArrayList<Livro> pesq = new ArrayList<>(); 
+        
+        String sql = "Select * from livro;";
+        try {
+            PreparedStatement comando = DB.connection().prepareStatement(sql);
+            ResultSet resultado = comando.executeQuery();
+            while (resultado.next()) {                
+                Livro liv = new Livro(resultado.getInt("id"), resultado.getString("titulo"), resultado.getString("subtitulo"), resultado.getString("isbn"), resultado.getBoolean("online"), resultado.getBoolean("braile"), resultado.getString("genero"), resultado.getInt("paginas"), resultado.getInt("editora"), resultado.getBoolean("Status"));
+                liv.setAno(resultado.getInt("ano"));
+                pesq.add(liv);
+            }            
+            return pesq;
+        } catch (Exception e) {
+            System.out.println("deu erro");
+            return null;
+        }
+    }
+    
+    public ArrayList<Livro> pesquisarAutor(int codAutor) {
+        ArrayList<Livro> pesq = new ArrayList<>(); 
+        
+        String sql = "Select * from livro as l where l.id = n.livro_id inner join livro_has_autor as n where n.Autor_id = ?";
+        try {
+            PreparedStatement comando = DB.connection().prepareStatement(sql);
+            comando.setInt(1, codAutor);
+            ResultSet resultado = comando.executeQuery();
+            while (resultado.next()) {                
+                Livro liv = new Livro(resultado.getInt("id"), resultado.getString("titulo"), resultado.getString("subtitulo"), resultado.getString("isbn"), resultado.getBoolean("online"), resultado.getBoolean("braile"), resultado.getString("genero"), resultado.getInt("paginas"), resultado.getInt("editora"), resultado.getBoolean("Status"));
+                pesq.add(liv);
+            }
+            
+            return pesq;
+        } catch (Exception e) {
+            System.out.println("deu erro");
+            return null;
+        }
+    }    
 }
