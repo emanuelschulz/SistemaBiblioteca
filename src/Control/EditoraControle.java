@@ -15,6 +15,10 @@ public class EditoraControle {
 
     private Connection conexao = Conexao.getConexao();
 
+    
+    
+ 
+    
     public void GravarEditora(EditoraModelo editora) {
         if (editora.getId_editora() > 0) {
             return alterarEditora(editora);

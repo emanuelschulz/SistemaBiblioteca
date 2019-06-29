@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class ControleAutor {
 
-    private Connection conexao = Conexao.getConexaoBD();
+    private Connection conexao = Conexao.getConexao();
 
     public boolean gravarAutor(Autor autor) {
         if (autor.getId_autor() > 0) {
