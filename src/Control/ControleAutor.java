@@ -1,6 +1,6 @@
 package Control;
 
-import Model.Autor;
+import Model.AutorModelo;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ public class ControleAutor {
 
     private Connection conexao = Conexao.getConexaoBD();
 
-    public boolean gravarAutor(Autor autor) {
+    public boolean gravarAutor(AutorModelo autor) {
         if (autor.getId_autor() > 0) {
             return alterarAutor(autor);
         } else {
@@ -20,7 +20,7 @@ public class ControleAutor {
         }
     }
 
-    private boolean alterarAutor(Autor autor) {
+    private boolean alterarAutor(AutorModelo autor) {
         String sql = "update autor set  nome= ?,anoNasc=?,status= ? where id = ?";
 
         try {
@@ -41,7 +41,7 @@ public class ControleAutor {
         }
     }
 
-    public boolean inserirAutor(Autor autor) {
+    public boolean inserirAutor(AutorModelo autor) {
         String sql = "insert into autor (nome,anoNasc,status)"
                 + "values (?,?,?); ";
         try {
@@ -58,9 +58,9 @@ public class ControleAutor {
         }
     }
 
-    public ArrayList<Autor> pesquisarAutor(String filtro) {
+    public ArrayList<AutorModelo> pesquisarAutor(String filtro) {
 
-        ArrayList<Autor> listaAutor = new ArrayList<>();
+        ArrayList<AutorModelo> listaAutor = new ArrayList<>();
         String sql = "select * from autor where status = 1 and trim(lower(nome)) like ? order by id";
 
         try {
@@ -70,7 +70,7 @@ public class ControleAutor {
 
             while (resultado.next()) {
 
-                Autor autor = new Autor();
+                AutorModelo autor = new AutorModelo();
 
                 autor.setId_autor(resultado.getInt("id"));
                 autor.setNome(resultado.getString("nome"));
@@ -84,15 +84,15 @@ public class ControleAutor {
         return listaAutor;
     }
 
-    public boolean excluirAutor(Autor autor) {
+    public boolean excluirAutor(AutorModelo autor) {
         autor.setStatus(false);
         return alterarAutor(autor);
     }
 
-    public ArrayList<Autor> listarAutor() {
+    public ArrayList<AutorModelo> listarAutor() {
 
         String sql = "select id, nome, anaNasc from autor;";
-        ArrayList<Autor> autor = new ArrayList<>();
+        ArrayList<AutorModelo> autor = new ArrayList<>();
 
         try {
             PreparedStatement consulta = conexao.prepareStatement(sql);
@@ -100,7 +100,7 @@ public class ControleAutor {
 
             while (resultado.next()) {
 
-                Autor autor = new Autor();
+                AutorModelo autor = new AutorModelo();
 
                 autor.setId_autor(resultado.getInt("id"));
                 autor.setNome(resultado.getString("nome"));
