@@ -11,7 +11,12 @@ import java.util.ArrayList;
 
 public class ControleAutor {
 
-    private  Connection conexao = DB.connection();
+  
+    private final Connection conexao;
+
+    public ControleAutor() throws SQLException {
+        this.conexao = DB.connection();
+    }
 
     public boolean gravarAutor(AutorModelo autor) {
         if (autor.getId_autor() > 0) {
@@ -101,13 +106,12 @@ public class ControleAutor {
 
             while (resultado.next()) {
 
-                AutorModelo autor = new AutorModelo();
+                AutorModelo autorr = new AutorModelo();
 
-                autor.setId_autor(resultado.getInt("id"));
-                autor.setNome(resultado.getString("nome"));
-                autor.setAno_nasc(resultado.getDate("anoNasc"));
+                autorr.setId_autor(resultado.getInt("id"));
+                autorr.setNome(resultado.getString("nome"));
+                autorr.setAno_nasc(resultado.getDate("anoNasc"));
 
-                autor.add(autor);
             }
 
         } catch (Exception ex) {

@@ -13,7 +13,11 @@ import java.util.ArrayList;
  */
 public class EditoraControle {
 
-    private Connection conexao = DB.connection();
+    private final Connection conexao;
+
+    public EditoraControle() throws SQLException {
+        this.conexao = DB.connection();
+    }
 
     public boolean GravarEditora(EditoraModelo editora) {
         if (editora.getId_editora() > 0) {
@@ -68,7 +72,7 @@ return true;
     public ArrayList<EditoraModelo> pesquisarEditora(String filtro) {
 
         ArrayList<EditoraModelo> listaEditora = new ArrayList<>();
-        String sql = "select id_produtos, nome, lougradouro,telefone,site,ano_da_edicao from editora where status = 1 and trim(lower(nome)) like ? order by id_editora";
+        String sql = "select id_editora, nome, lougradouro,telefone,site,ano_da_edicao from editora where status = 1 and trim(lower(nome)) like ? order by id_editora";
 
         try {
             PreparedStatement consulta = conexao.prepareStatement(sql);
@@ -110,16 +114,15 @@ return true;
 
             while (resultado.next()) {
 
-                EditoraModelo editora = new EditoraModelo();
+                EditoraModelo editorra = new EditoraModelo();
 
-                editora.setId_produtos(resultado.getInt("id_produtos"));
-                editora.setNome(resultado.getString("nome"));
-                editora.setDescricao(resultado.getString("descricao"));
-                editora.setQuantidade(resultado.getInt("quantidade"));
-                editora.setUnidade(resultado.getString("unidade"));
-                editora.setPreco(resultado.getFloat("preco"));
+                editorra.setId_editora(resultado.getInt("Id_editora"));
+                editorra.setNome(resultado.getString("nome"));
+               editorra.setLougradouro(resultado.getString("lougradouro"));
+                editorra.setTelefone(resultado.getString("telefone"));
+                editorra.setSite(resultado.getString("site"));
+                editorra.setAno_da_edicao(resultado.getString("ano_da_edicao"));
 
-                editora.add(editora);
             }
 
         } catch (Exception ex) {
