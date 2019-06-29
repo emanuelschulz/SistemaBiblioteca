@@ -13,13 +13,9 @@ import java.util.ArrayList;
  */
 public class EditoraControle {
 
-    private Connection conexao = Conexao.getConexao();
+    private Connection conexao = DB.connection();
 
-    
-    
- 
-    
-    public void GravarEditora(EditoraModelo editora) {
+    public boolean GravarEditora(EditoraModelo editora) {
         if (editora.getId_editora() > 0) {
             return alterarEditora(editora);
         } else {
@@ -27,7 +23,7 @@ public class EditoraControle {
         }
     }
 
-    private void alterarEditora(EditoraModelo editora) {
+    private boolean alterarEditora(EditoraModelo editora) {
         String sql = "update editora set  nome= ?,lougradouro=?,telefone= ?,site= ?,ano_da_edicao= ?,status= ? where id_editora = ?";
 
         try {
@@ -41,14 +37,15 @@ public class EditoraControle {
             comando.setBoolean(6, editora.isStatus());
 
             comando.executeUpdate();
-
+return true;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return false;
 
         }
     }
 
-    public void inserirEditora(EditoraModelo editora) {
+    public boolean inserirEditora(EditoraModelo editora) {
         String sql = "insert into editora (nome,lougradouro,telefone,site,ano_da_edicao,status)"
                 + "values (?,?,?,?,?,?); ";
         try {
@@ -61,8 +58,10 @@ public class EditoraControle {
             comando.setBoolean(6, editora.isStatus());
 
             comando.executeUpdate();
+            return true;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 
@@ -78,7 +77,7 @@ public class EditoraControle {
 
             while (resultado.next()) {
 
-EditoraModelo editora = new EditoraModelo();
+                EditoraModelo editora = new EditoraModelo();
 
                 editora.setId_editora(resultado.getInt("id_editora"));
                 editora.setNome(resultado.getString("nome"));
@@ -95,15 +94,15 @@ EditoraModelo editora = new EditoraModelo();
         return listaEditora;
     }
 
-    public void excluirEditora(EditoraModelo editora) {
+    public boolean excluirEditora(EditoraModelo editora) {
         editora.setStatus(false);
         return alterarEditora(editora);
     }
 
-    public ArrayList<Produto> listarProduto() {
+    public ArrayList<EditoraModelo> listarModelo() {
 
-        String sql = "select id_produtos, nome, descricao, quantidade, unidade, preco from produto;";
-        ArrayList<Produto> produtos = new ArrayList<>();
+        String sql = "select id_editora, nome, lougradouro,telefone, site, ano_da_edicao from editora;";
+        ArrayList<EditoraModelo> editora = new ArrayList<>();
 
         try {
             PreparedStatement consulta = conexao.prepareStatement(sql);
@@ -111,23 +110,22 @@ EditoraModelo editora = new EditoraModelo();
 
             while (resultado.next()) {
 
-                Produto produto = new Produto();
+                EditoraModelo editorra = new EditoraModelo();
 
-                produto.setId_produtos(resultado.getInt("id_produtos"));
-                produto.setNome(resultado.getString("nome"));
-                produto.setDescricao(resultado.getString("descricao"));
-                produto.setQuantidade(resultado.getInt("quantidade"));
-                produto.setUnidade(resultado.getString("unidade"));
-                produto.setPreco(resultado.getFloat("preco"));
+                editorra.setId_editora(resultado.getInt("Id_editora"));
+                editorra.setNome(resultado.getString("nome"));
+               editorra.setLougradouro(resultado.getString("lougradouro"));
+                editorra.setTelefone(resultado.getString("telefone"));
+                editorra.setSite(resultado.getString("site"));
+                editorra.setAno_da_edicao(resultado.getString("ano_da_edicao"));
 
-                produtos.add(produto);
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        return produtos;
+        return editora;
 
     }
 }

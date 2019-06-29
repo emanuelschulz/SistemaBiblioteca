@@ -9,6 +9,9 @@ public class EditoraModelo {
     private String site;
     private String ano_da_edicao;
     private boolean status;
+    
+    public EditoraModelo(){
+    }
 
     public EditoraModelo(int Id_editora, String nome, String lougradouro, String telefone, String site, String ano_da_edicao, boolean status) {
         this.Id_editora = Id_editora;
@@ -19,6 +22,7 @@ public class EditoraModelo {
         this.ano_da_edicao = ano_da_edicao;
         this.status = status;
     }
+
 
 
 
