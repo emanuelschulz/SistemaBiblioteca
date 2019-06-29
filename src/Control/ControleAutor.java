@@ -1,26 +1,4 @@
-<<<<<<< HEAD
-package Control;
 
-import Model.Autor;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-
-public class ControleAutor {
-    public void cadastrarAutor(Autor a) {
-        String sql ="insert into autor (nome, anoNasc, status) values(?,?,?)";
-        try {
-            PreparedStatement comando = DB.connection().prepareStatement(sql);
-            comando.setString(1, a.getNome());
-            comando.setDate(2, (Date) a.getAno_nasc());
-            comando.setBoolean(3, true);
-            comando.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("deu erro"); 
-        }
-        
-    }
-}
-=======
 package Control;
 
 import Model.AutorModelo;
@@ -33,7 +11,7 @@ import java.util.ArrayList;
 
 public class ControleAutor {
 
-    private Connection conexao = Conexao.getConexao();
+    private  Connection conexao = DB.connection();
 
     public boolean gravarAutor(AutorModelo autor) {
         if (autor.getId_autor() > 0) {
@@ -140,4 +118,3 @@ public class ControleAutor {
 
     }
 }
->>>>>>> master
