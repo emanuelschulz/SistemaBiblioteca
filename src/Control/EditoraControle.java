@@ -13,7 +13,11 @@ import java.util.ArrayList;
  */
 public class EditoraControle {
 
-    private Connection conexao = DB.connection();
+    private final Connection conexao;
+
+    public EditoraControle() throws SQLException {
+        this.conexao = DB.connection();
+    }
 
     public boolean GravarEditora(EditoraModelo editora) {
         if (editora.getId_editora() > 0) {
@@ -68,7 +72,7 @@ return true;
     public ArrayList<EditoraModelo> pesquisarEditora(String filtro) {
 
         ArrayList<EditoraModelo> listaEditora = new ArrayList<>();
-        String sql = "select id_produtos, nome, lougradouro,telefone,site,ano_da_edicao from editora where status = 1 and trim(lower(nome)) like ? order by id_editora";
+        String sql = "select id_editora, nome, lougradouro,telefone,site,ano_da_edicao from editora where status = 1 and trim(lower(nome)) like ? order by id_editora";
 
         try {
             PreparedStatement consulta = conexao.prepareStatement(sql);
