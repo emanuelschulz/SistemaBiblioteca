@@ -2,7 +2,7 @@ package Model;
 
 import java.util.Date;
 
-public class Autor {
+public class AutorModelo {
 
     private int Id_autor;
     private Date ano_nasc;
@@ -10,12 +10,16 @@ public class Autor {
     private String email;
     private boolean status;
 
-    public Autor(int Id_autor, Date ano_nasc, String nome, String email, boolean status) {
+    public AutorModelo(int Id_autor, Date ano_nasc, String nome, String email, boolean status) {
         this.Id_autor = Id_autor;
         this.ano_nasc = ano_nasc;
         this.nome = nome;
         this.email = email;
         this.status = status;
+    }
+
+    public AutorModelo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId_autor() {
@@ -26,8 +30,8 @@ public class Autor {
         this.Id_autor = Id_autor;
     }
 
-    public Date getAno_nasc() {
-        return ano_nasc;
+    public Date getAnoNasc() {
+        return this.ano_nasc;
     }
 
     public void setAno_nasc(Date ano_nasc) {
