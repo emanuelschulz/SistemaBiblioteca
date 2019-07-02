@@ -45,7 +45,7 @@ public class ControleEditora {
 
     public boolean inserirEditora(Editora editora) {
         String sql = "insert into editora (nome,logradouro,telefone,site,status)"
-                + "values (?,?,?,?,?,?); ";
+                + "values (?,?,?,?,?); ";
         try {
             PreparedStatement comando = DB.connection().prepareStatement(sql);
             comando.setString(1, editora.getNome());

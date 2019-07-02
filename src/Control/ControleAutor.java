@@ -19,7 +19,7 @@ public class ControleAutor {
     }
 
     private boolean alterarAutor(Autor autor) {
-        String sql = "update autor set  nome= ?,anoNasc=?,status= ? where id = ?";
+        String sql = "update Autor set  nome= ?,anoNasc=?,status= ? where id = ?";
 
         try {
             PreparedStatement comando = DB.connection().prepareStatement(sql);
@@ -40,7 +40,7 @@ public class ControleAutor {
     }
 
     public boolean inserirAutor(Autor autor) {
-        String sql = "insert into autor (nome,anoNasc,status)"
+        String sql = "insert into Autor (nome,anoNasc,status)"
                 + "values (?,?,?); ";
         try {
             PreparedStatement comando = DB.connection().prepareStatement(sql);
@@ -59,7 +59,7 @@ public class ControleAutor {
     public ArrayList<Autor> pesquisarAutor(String filtro) {
 
         ArrayList<Autor> listaAutor = new ArrayList<>();
-        String sql = "select * from autor where status = 1 and trim(lower(nome)) like ? order by id";
+        String sql = "select * from Autor where status = 1 and trim(lower(nome)) like ? order by id";
 
         try {
             PreparedStatement consulta = DB.connection().prepareStatement(sql);
@@ -73,7 +73,8 @@ public class ControleAutor {
                 autor.setId_autor(resultado.getInt("id"));
                 autor.setNome(resultado.getString("nome"));
                 autor.setAno_nasc(resultado.getString("anoNasc"));
-
+                
+                listaAutor.add(autor);
             }
         } catch (Exception ex) {
             ex.printStackTrace();

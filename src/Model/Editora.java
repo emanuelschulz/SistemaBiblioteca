@@ -65,5 +65,9 @@ public class Editora {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
+
+    @Override
+    public String toString() {
+        return this.nome + " ║ " + this.logradouro + " ║ " + this.site;
+    }
 }

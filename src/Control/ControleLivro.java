@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class ControleLivro {
 
-    public void cadastrarLivro(Livro l, Autor[] autores) {
-        String sql = "insert into livro (titulo, subtitulo, isbn, edicao, braile, classificacao, paginas, online, editora, ano, status) values(?,?,?,?,?,?,?,?,?,?,?)";
+    public void cadastrarLivro(Livro l, Object[] autores) {
+        String sql = "insert into livro (titulo, subtitulo, isbn, edicao, braile, genero, paginas, disponivelOnline, editora_id, ano, status) values(?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement comando = DB.connection().prepareStatement(sql);
             comando.setString(1, l.getTitulo());
@@ -17,7 +17,7 @@ public class ControleLivro {
             comando.setString(3, l.getIsbn());
             comando.setInt(4, l.getEdicao());
             comando.setBoolean(5, l.getBraile());
-            comando.setString(6, l.getClassificaçao());
+            comando.setString(6, l.getGenero());
             comando.setInt(7, l.getNumero_de_paginas());
             comando.setBoolean(8, l.getOnline());
             comando.setInt(9, l.getId_editora());
@@ -40,7 +40,18 @@ public class ControleLivro {
             comando.setString(1, nome);
             ResultSet resultado = comando.executeQuery();
             while (resultado.next()) {
-                Livro liv = new Livro(resultado.getInt("id"), resultado.getString("titulo"), resultado.getString("subtitulo"), resultado.getString("isbn"), resultado.getBoolean("online"), resultado.getBoolean("braile"), resultado.getString("genero"), resultado.getInt("paginas"), resultado.getInt("editora"), resultado.getBoolean("Status"));
+                Livro liv = new Livro(resultado.getInt("id"),
+                        resultado.getString("titulo"),
+                        resultado.getString("subtitulo"),
+                        resultado.getString("isbn"),
+                        resultado.getBoolean("disponivelOnline"),
+                        resultado.getBoolean("braile"),
+                        resultado.getString("genero"),
+                        resultado.getInt("paginas"),
+                        resultado.getInt("editora_id"),
+                        resultado.getInt("ano"),
+                        resultado.getInt("edicao"),
+                        resultado.getBoolean("Status"));
                 pesq.add(liv);
             }
 
@@ -59,7 +70,18 @@ public class ControleLivro {
             PreparedStatement comando = DB.connection().prepareStatement(sql);
             ResultSet resultado = comando.executeQuery();
             while (resultado.next()) {
-                Livro liv = new Livro(resultado.getInt("id"), resultado.getString("titulo"), resultado.getString("subtitulo"), resultado.getString("isbn"), resultado.getBoolean("online"), resultado.getBoolean("braile"), resultado.getString("genero"), resultado.getInt("paginas"), resultado.getInt("editora"), resultado.getBoolean("Status"));
+                Livro liv = new Livro(resultado.getInt("id"),
+                        resultado.getString("titulo"),
+                        resultado.getString("subtitulo"),
+                        resultado.getString("isbn"),
+                        resultado.getBoolean("disponivelOnline"),
+                        resultado.getBoolean("braile"),
+                        resultado.getString("genero"),
+                        resultado.getInt("paginas"),
+                        resultado.getInt("editora_id"),
+                        resultado.getInt("ano"),
+                        resultado.getInt("edicao"),
+                        resultado.getBoolean("Status"));
                 liv.setAno(resultado.getInt("ano"));
                 pesq.add(liv);
             }
@@ -79,7 +101,18 @@ public class ControleLivro {
             comando.setInt(1, codAutor);
             ResultSet resultado = comando.executeQuery();
             while (resultado.next()) {
-                Livro liv = new Livro(resultado.getInt("id"), resultado.getString("titulo"), resultado.getString("subtitulo"), resultado.getString("isbn"), resultado.getBoolean("online"), resultado.getBoolean("braile"), resultado.getString("genero"), resultado.getInt("paginas"), resultado.getInt("editora"), resultado.getBoolean("Status"));
+                Livro liv = new Livro(resultado.getInt("id"),
+                        resultado.getString("titulo"),
+                        resultado.getString("subtitulo"),
+                        resultado.getString("isbn"),
+                        resultado.getBoolean("disponivelOnline"),
+                        resultado.getBoolean("braile"),
+                        resultado.getString("genero"),
+                        resultado.getInt("paginas"),
+                        resultado.getInt("editora_id"),
+                        resultado.getInt("ano"),
+                        resultado.getInt("edicao"),
+                        resultado.getBoolean("Status"));
                 pesq.add(liv);
             }
 
@@ -90,17 +123,19 @@ public class ControleLivro {
         }
     }
 
-    private void cadastrarNN(Autor[] autores) {
-        String sql = "INSERT INTO livro_has_Autor (livro_id,Autor_id) VALUES ((select max(id) from Livro), ?);";
+    private void cadastrarNN(Object[] autores) {
+        String sql = "INSERT INTO livro_has_Autor (livro_id,Autor_id) VALUES ((select max(id) from livro), ?);";
 
-        for (Autor autor : autores) {
+        for (Object autor : autores) {
             try {
+                Autor a = (Autor) autor;
                 PreparedStatement comando = DB.connection().prepareStatement(sql);
-                comando.setInt(1, autor.getId_autor());
+                comando.setInt(1, a.getId_autor());
 
                 comando.executeUpdate();
             } catch (Exception e) {
-                System.out.println("deu erro" + this.getClass().getName() + ".cadastrarNN()");
+                System.out.println("deu erro " + this.getClass().getName() + ".cadastrarNN()");
+                e.printStackTrace();
             }
         }
     }
