@@ -2,33 +2,28 @@ package Model;
 
 public class Editora {
 
-    private int Id_editora;
+    private int id;
     private String nome;
-    private String lougradouro;
+    private String logradouro;
     private String telefone;
     private String site;
-    private String ano_da_edicao;
     private boolean status;
-    
-    public Editora(){
-    }
 
-    public Editora(int Id_editora, String nome, String lougradouro, String telefone, String site, String ano_da_edicao, boolean status) {
-        this.Id_editora = Id_editora;
+    public Editora(int id, String nome, String logradouro, String telefone, String site, boolean status) {
+        this.id = id;
         this.nome = nome;
-        this.lougradouro = lougradouro;
+        this.logradouro = logradouro;
         this.telefone = telefone;
         this.site = site;
-        this.ano_da_edicao = ano_da_edicao;
         this.status = status;
     }
 
-    public int getId_editora() {
-        return Id_editora;
+    public int getId() {
+        return id;
     }
 
-    public void setId_editora(int Id_editora) {
-        this.Id_editora = Id_editora;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -39,12 +34,12 @@ public class Editora {
         this.nome = nome;
     }
 
-    public String getLougradouro() {
-        return lougradouro;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public void setLougradouro(String lougradouro) {
-        this.lougradouro = lougradouro;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
     public String getTelefone() {
@@ -63,14 +58,6 @@ public class Editora {
         this.site = site;
     }
 
-    public String getAno_da_edicao() {
-        return ano_da_edicao;
-    }
-
-    public void setAno_da_edicao(String ano_da_edicao) {
-        this.ano_da_edicao = ano_da_edicao;
-    }
-
     public boolean isStatus() {
         return status;
     }
@@ -78,5 +65,5 @@ public class Editora {
     public void setStatus(boolean status) {
         this.status = status;
     }
-
+    
 }

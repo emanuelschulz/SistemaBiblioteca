@@ -17,7 +17,7 @@ public class DB {
 
     public static Connection connection() throws SQLException {
         if (connect == null) {
-            connect = DriverManager.getConnection("jdbc:mysql://srv02.hostoo.io:3306/poo1?serverTimezone=UTC&autoReconnect=true&useSSL=false", "dbbiblio", "brQDSbQZ-hU4Vu@w");
+            connect = DriverManager.getConnection("jdbc:mysql://srv02.hostoo.io:3306/dbbiblio?serverTimezone=UTC&autoReconnect=true&useSSL=false", "dbbiblio", "brQDSbQZ-hU4Vu@w");
         }
         return connect;
     }

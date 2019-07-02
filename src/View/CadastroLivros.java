@@ -5,6 +5,8 @@
  */
 package View;
 
+import Control.ControleAutor;
+import Control.ControleEditora;
 import Model.Autor;
 import Model.Editora;
 import Model.Livro;
@@ -16,13 +18,16 @@ import java.util.List;
  * @author Sirlei
  */
 public class CadastroLivros extends javax.swing.JFrame {
-
+    ControleAutor ca = new ControleAutor();
+    ControleEditora ce = new ControleEditora();
     /**
      * Creates new form CadastroLivros
      */
     public CadastroLivros() {
         initComponents();
         this.setLocationRelativeTo(null);
+        jlistAutores.setListData(ca.listarAutor().toArray());
+        jlistEditora.setListData(ce.listarEditora().toArray());
     }
 
     /**
@@ -294,11 +299,12 @@ public class CadastroLivros extends javax.swing.JFrame {
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                             .addComponent(jScrollPane2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbNovoAutor)
-                            .addComponent(jbNovaEditora)
-                            .addComponent(jtfPesqAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfPesqEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfPesqAutores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jbNovoAutor)
+                                .addComponent(jbNovaEditora)
+                                .addComponent(jtfPesqEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -317,7 +323,7 @@ public class CadastroLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfTituloActionPerformed
 
     private void jbtSalvarCadLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalvarCadLivrosActionPerformed
-       int editora = (int) ((Editora) jlistEditora.getSelectedValue()).getId_editora();
+       int editora = (int) ((Editora) jlistEditora.getSelectedValue()).getId();
         
        Livro livro = new Livro (0, jtfTitulo.getText(), 
                jtfSubtitulo.getText(), 

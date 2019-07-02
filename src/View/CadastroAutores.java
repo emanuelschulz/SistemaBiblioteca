@@ -5,12 +5,15 @@
  */
 package View;
 
+import Control.ControleAutor;
+import Model.Autor;
+
 /**
  *
  * @author Sirlei
  */
 public class CadastroAutores extends javax.swing.JFrame {
-
+    Control.ControleAutor ca = new ControleAutor();
     /**
      * Creates new form CadastroAutores
      */
@@ -33,9 +36,9 @@ public class CadastroAutores extends javax.swing.JFrame {
         jtfAutor = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jbtSalvarAutor = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         jbtnFechar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jftfAnoNasc = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -54,7 +57,7 @@ public class CadastroAutores extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel5.setText("DATA DE NASC.");
+        jLabel5.setText("ANO DE NASC.");
 
         jbtSalvarAutor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jbtSalvarAutor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/biblioteca_guido/imagem/disquete30x30.jpg"))); // NOI18N
@@ -71,6 +74,12 @@ public class CadastroAutores extends javax.swing.JFrame {
             }
         });
 
+        try {
+            jftfAnoNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,10 +95,10 @@ public class CadastroAutores extends javax.swing.JFrame {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtfAutor)
+                                    .addComponent(jftfAnoNasc, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
+                                .addGap(64, 64, 64)
                                 .addComponent(jbtSalvarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -97,7 +106,7 @@ public class CadastroAutores extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator1)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +124,7 @@ public class CadastroAutores extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jftfAnoNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jbtSalvarAutor))
                 .addGap(18, 18, 18)
                 .addComponent(jbtnFechar)
@@ -126,8 +135,8 @@ public class CadastroAutores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtSalvarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalvarAutorActionPerformed
-        // TODO add your handling code here:
-        System.out.println("");
+        Autor autor = new Autor(0, jftfAnoNasc.getValue().toString(), jtfAutor.getText(), "", true);
+        ca.gravarAutor(autor);
     }//GEN-LAST:event_jbtSalvarAutorActionPerformed
 
     private void jtfAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfAutorActionPerformed
@@ -180,9 +189,9 @@ public class CadastroAutores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbtSalvarAutor;
     private javax.swing.JButton jbtnFechar;
+    private javax.swing.JFormattedTextField jftfAnoNasc;
     private javax.swing.JTextField jtfAutor;
     // End of variables declaration//GEN-END:variables
 }
