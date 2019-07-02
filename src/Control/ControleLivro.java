@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ControleLivro {
 
-    public void cadastrarLivro(Livro l, Object[] autores) {
+    public void cadastrarLivro(Livro l, Autor[] autores) {
         String sql = "insert into livro (titulo, subtitulo, isbn, edicao, braile, genero, paginas, disponivelOnline, editora_id, ano, status) values(?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement comando = DB.connection().prepareStatement(sql);
@@ -123,14 +123,13 @@ public class ControleLivro {
         }
     }
 
-    private void cadastrarNN(Object[] autores) {
+    private void cadastrarNN(Autor[] autores) {
         String sql = "INSERT INTO livro_has_Autor (livro_id,Autor_id) VALUES ((select max(id) from livro), ?);";
 
-        for (Object autor : autores) {
+        for (Autor autor : autores) {
             try {
-                Autor a = (Autor) autor;
                 PreparedStatement comando = DB.connection().prepareStatement(sql);
-                comando.setInt(1, a.getId_autor());
+                comando.setInt(1, autor.getId_autor());
 
                 comando.executeUpdate();
             } catch (Exception e) {
