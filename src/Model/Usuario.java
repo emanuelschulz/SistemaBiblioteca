@@ -4,40 +4,41 @@ import java.util.Date;
 
 public class Usuario {
 
-    private int Id_usuario;
+    private int id;
     private String nome;
-    private String email;
-    private String tipo_usuario;
+    private Date dataNasc;
     private String cpf;
-    private String telefone;
-    private Date data_nasc;
-    private String endereco;
-    private Date suspencao;
-    private boolean status;
+    private String email;
     private String senha;
+    private Date suspensoAte;
+    private String codigoUsuario;
+    private String tipo;
+    private String logradouro;
+    private boolean status;
 
-    
-
-    public Usuario(int Id_usuario, String nome, String email, String tipo_usuario, String cpf, String telefone, Date data_nasc, String endereco, Date suspencao, boolean status, String senha) {
-        this.Id_usuario = Id_usuario;
+    public Usuario(int id, String nome, Date dataNasc, String cpf, String email, String senha, Date suspensoAte, String codigoUsuario, String tipo, String logradouro, boolean status) {
+        this.id = id;
         this.nome = nome;
-        this.email = email;
-        this.tipo_usuario = tipo_usuario;
+        this.dataNasc = dataNasc;
         this.cpf = cpf;
-        this.telefone = telefone;
-        this.data_nasc = data_nasc;
-        this.endereco = endereco;
-        this.suspencao = suspencao;
-        this.status = status;
+        this.email = email;
         this.senha = senha;
+        this.suspensoAte = suspensoAte;
+        this.codigoUsuario = codigoUsuario;
+        this.tipo = tipo;
+        this.logradouro = logradouro;
+        this.status = status;
     }
 
-    public int getId_usuario() {
-        return Id_usuario;
+    public Usuario() {
     }
 
-    public void setId_usuario(int Id_usuario) {
-        this.Id_usuario = Id_usuario;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -48,20 +49,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
+    public Date getDataNasc() {
+        return dataNasc;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTipo_usuario() {
-        return tipo_usuario;
-    }
-
-    public void setTipo_usuario(String tipo_usuario) {
-        this.tipo_usuario = tipo_usuario;
+    public void setDataNasc(Date dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
     public String getCpf() {
@@ -72,36 +65,52 @@ public class Usuario {
         this.cpf = cpf;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Date getData_nasc() {
-        return data_nasc;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setData_nasc(Date data_nasc) {
-        this.data_nasc = data_nasc;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public Date getSuspensoAte() {
+        return suspensoAte;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setSuspensoAte(Date suspensoAte) {
+        this.suspensoAte = suspensoAte;
     }
 
-    public Date getSuspencao() {
-        return suspencao;
+    public String getCodigoUsuario() {
+        return codigoUsuario;
     }
 
-    public void setSuspencao(Date suspencao) {
-        this.suspencao = suspencao;
+    public void setCodigoUsuario(String codigoUsuario) {
+        this.codigoUsuario = codigoUsuario;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
     public boolean isStatus() {
@@ -111,14 +120,4 @@ public class Usuario {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-    
-
 }

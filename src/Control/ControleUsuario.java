@@ -1,7 +1,7 @@
 package Control;
 
 import java.sql.PreparedStatement;
-import Model.UsuarioModelo;
+import Model.Usuario;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -16,30 +16,31 @@ public class ControleUsuario {
         this.conexao = DB.connection();
     }
 
-    public boolean GravarEditora(UsuarioModelo usuario) {
-        if (usuario.getId_usuario() > 0) {
+    public boolean GravarUsuario(Usuario usuario) {
+        if (usuario.getId() > 0) {
             return alterarUsuario(usuario);
         } else {
             return inserirUsuario(usuario);
         }
     }
 
-    private boolean alterarUsuario(UsuarioModelo usuario) {
-        String sql = "update usuario set  nome= ?, email=?, tipo_usuario= ?, cpf= ?,telefone= ?, data_nasc= ?, endereco = ?, suspencao = ?, status = ?, senha = ?  where id_usuario = ?";
+    private boolean alterarUsuario(Usuario usuario) {
+        String sql = "UPDATE Usuarios SET nome=?,dataNasc=?,cpf=?,email=?,senha=?,status=?,suspensoAte=?,codigoUsuario=?,tipo=?,logradouro=? WHERE id=?;";
 
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
 
             comando.setString(1, usuario.getNome());
-            comando.setString(2, usuario.getEmail());
-            comando.setString(3, usuario.getTipo_usuario());
-            comando.setString(4, usuario.getCpf());
-            comando.setString(5, usuario.getTelefone());
-            comando.setDate(6, (Date) usuario.getData_nasc());
-            comando.setString(7, usuario.getEndereco());
-            comando.setDate(8, (Date) usuario.getSuspencao());
-            comando.setBoolean(9, usuario.isStatus());
-            comando.setString(10, usuario.getSenha());
+            comando.setDate(2, (Date) usuario.getDataNasc());
+            comando.setString(3, usuario.getCpf());
+            comando.setString(4, usuario.getEmail());
+            comando.setString(5, usuario.getSenha());
+            comando.setBoolean(6, usuario.isStatus());
+            comando.setDate(7, (Date) usuario.getSuspensoAte());
+            comando.setString(8, usuario.getCodigoUsuario());
+            comando.setString(9, usuario.getTipo());
+            comando.setString(10, usuario.getLogradouro());
+            comando.setInt(11, usuario.getId());
 
             comando.executeUpdate();
             return true;
@@ -50,21 +51,21 @@ public class ControleUsuario {
         }
     }
 
-    public boolean inserirUsuario(UsuarioModelo usuario) {
-        String sql = "insert into usuario (nome,lougradouro,telefone,site,ano_da_edicao,status)"
-                + "values (?,?,?,?,?,?); ";
+    public boolean inserirUsuario(Usuario usuario) {
+        String sql = "INSERT INTO Usuarios(nome,dataNasc,cpf,email,senha,status,suspensoAte,codigoUsuario,tipo,logradouro)"
+                + "values (?,?,?,?,?,?,?,?,?,?);";
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);
             comando.setString(1, usuario.getNome());
-            comando.setString(2, usuario.getEmail());
-            comando.setString(3, usuario.getTipo_usuario());
-            comando.setString(4, usuario.getCpf());
-            comando.setString(5, usuario.getTelefone());
-            comando.setDate(6, (Date) usuario.getData_nasc());
-            comando.setString(7, usuario.getEndereco());
-            comando.setDate(8, (Date) usuario.getSuspencao());
-            comando.setBoolean(9, usuario.isStatus());
-            comando.setString(10, usuario.getSenha());
+            comando.setDate(2, (Date) usuario.getDataNasc());
+            comando.setString(3, usuario.getCpf());
+            comando.setString(4, usuario.getEmail());
+            comando.setString(5, usuario.getSenha());
+            comando.setBoolean(6, usuario.isStatus());
+            comando.setDate(7, (Date) usuario.getSuspensoAte());
+            comando.setString(8, usuario.getCodigoUsuario());
+            comando.setString(9, usuario.getTipo());
+            comando.setString(10, usuario.getLogradouro());
 
             comando.executeUpdate();
             return true;
@@ -74,10 +75,10 @@ public class ControleUsuario {
         }
     }
 
-    public ArrayList<UsuarioModelo> pesquisarEditora(String filtro) {
+    public ArrayList<Usuario> pesquisarUsuario(String filtro) {
 
-        ArrayList<UsuarioModelo> listaEditora = new ArrayList<>();
-        String sql = "select id_usuario, nome, lougradouro,telefone,site,ano_da_edicao from usuario where status = 1 and trim(lower(nome)) like ? order by id_usuario";
+        ArrayList<Usuario> listaUsuario = new ArrayList<>();
+        String sql = "select * from usuario where status = 1 and trim(lower(nome)) like ? order by id";
 
         try {
             PreparedStatement consulta = conexao.prepareStatement(sql);
@@ -85,33 +86,38 @@ public class ControleUsuario {
             ResultSet resultado = consulta.executeQuery();
 
             while (resultado.next()) {
+                //id,nome,dataNasc,cpf,email,senha,suspensoAte,codigoUsuario,tipo,logradouro,status
 
-                UsuarioModelo usuario = new UsuarioModelo();
-
-                usuario.setId_usuario(resultado.getInt("id_usuario"));
-                usuario.setNome(resultado.getString("nome"));
-                usuario.setLougradouro(resultado.getString("lougradouro"));
-                usuario.setTelefone(resultado.getString("telefone"));
-                usuario.setSite(resultado.getString("site"));
-                usuario.setAno_da_edicao(resultado.getString("ano_de_edicao"));
-
+                Usuario usuario = new Usuario(resultado.getInt("id"),
+                        resultado.getString("nome"),
+                        resultado.getDate("dataNasc"),
+                        resultado.getString("cpf"),
+                        resultado.getString("email"),
+                        resultado.getString("senha"),
+                        resultado.getDate("suspensoAte"),
+                        resultado.getString("codigoUsuario"),
+                        resultado.getString("tipo"),
+                        resultado.getString("logradouro"),
+                        resultado.getBoolean("status"));
+                
+                listaUsuario.add(usuario);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        return listaEditora;
+        return listaUsuario;
     }
 
-    public boolean excluirEditora(UsuarioModelo usuario) {
+    public boolean excluirUsuario(Usuario usuario) {
         usuario.setStatus(false);
         return alterarUsuario(usuario);
     }
 
-    public ArrayList<UsuarioModelo> listarModelo() {
+    public ArrayList<Usuario> listarModelo() {
 
-        String sql = "select id_usuario, nome, lougradouro,telefone, site, ano_da_edicao from usuario;";
-        ArrayList<UsuarioModelo> usuario = new ArrayList<>();
+        String sql = "select * from usuario;";
+        ArrayList<Usuario> listaUsuario = new ArrayList<>();
 
         try {
             PreparedStatement consulta = conexao.prepareStatement(sql);
@@ -119,22 +125,25 @@ public class ControleUsuario {
 
             while (resultado.next()) {
 
-                UsuarioModelo usuarioo = new UsuarioModelo();
-
-                usuarioo.setId_usuario(resultado.getInt("Id_usuario"));
-                usuarioo.setNome(resultado.getString("nome"));
-                usuarioo.setLougradouro(resultado.getString("lougradouro"));
-                usuarioo.setTelefone(resultado.getString("telefone"));
-                usuarioo.setSite(resultado.getString("site"));
-                usuarioo.setAno_da_edicao(resultado.getString("ano_da_edicao"));
-
+                Usuario usuario = new Usuario(resultado.getInt("id"),
+                        resultado.getString("nome"),
+                        resultado.getDate("dataNasc"),
+                        resultado.getString("cpf"),
+                        resultado.getString("email"),
+                        resultado.getString("senha"),
+                        resultado.getDate("suspensoAte"),
+                        resultado.getString("codigoUsuario"),
+                        resultado.getString("tipo"),
+                        resultado.getString("logradouro"),
+                        resultado.getBoolean("status"));
+                listaUsuario.add(usuario);
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        return usuario;
+        return listaUsuario;
 
     }
 }
