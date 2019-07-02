@@ -1,6 +1,6 @@
 package Control;
 
-import Model.EditoraModelo;
+import Model.Editora;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +19,7 @@ public class EditoraControle {
         this.conexao = DB.connection();
     }
 
-    public boolean GravarEditora(EditoraModelo editora) {
+    public boolean GravarEditora(Editora editora) {
         if (editora.getId_editora() > 0) {
             return alterarEditora(editora);
         } else {
@@ -27,7 +27,7 @@ public class EditoraControle {
         }
     }
 
-    private boolean alterarEditora(EditoraModelo editora) {
+    private boolean alterarEditora(Editora editora) {
         String sql = "update editora set  nome= ?,lougradouro=?,telefone= ?,site= ?,ano_da_edicao= ?,status= ? where id_editora = ?";
 
         try {
@@ -49,7 +49,7 @@ return true;
         }
     }
 
-    public boolean inserirEditora(EditoraModelo editora) {
+    public boolean inserirEditora(Editora editora) {
         String sql = "insert into editora (nome,lougradouro,telefone,site,ano_da_edicao,status)"
                 + "values (?,?,?,?,?,?); ";
         try {
@@ -69,9 +69,9 @@ return true;
         }
     }
 
-    public ArrayList<EditoraModelo> pesquisarEditora(String filtro) {
+    public ArrayList<Editora> pesquisarEditora(String filtro) {
 
-        ArrayList<EditoraModelo> listaEditora = new ArrayList<>();
+        ArrayList<Editora> listaEditora = new ArrayList<>();
         String sql = "select id_editora, nome, lougradouro,telefone,site,ano_da_edicao from editora where status = 1 and trim(lower(nome)) like ? order by id_editora";
 
         try {
@@ -81,7 +81,7 @@ return true;
 
             while (resultado.next()) {
 
-                EditoraModelo editora = new EditoraModelo();
+                Editora editora = new Editora();
 
                 editora.setId_editora(resultado.getInt("id_editora"));
                 editora.setNome(resultado.getString("nome"));
@@ -98,15 +98,15 @@ return true;
         return listaEditora;
     }
 
-    public boolean excluirEditora(EditoraModelo editora) {
+    public boolean excluirEditora(Editora editora) {
         editora.setStatus(false);
         return alterarEditora(editora);
     }
 
-    public ArrayList<EditoraModelo> listarModelo() {
+    public ArrayList<Editora> listarModelo() {
 
         String sql = "select id_editora, nome, lougradouro,telefone, site, ano_da_edicao from editora;";
-        ArrayList<EditoraModelo> editora = new ArrayList<>();
+        ArrayList<Editora> editora = new ArrayList<>();
 
         try {
             PreparedStatement consulta = conexao.prepareStatement(sql);
@@ -114,7 +114,7 @@ return true;
 
             while (resultado.next()) {
 
-                EditoraModelo editorra = new EditoraModelo();
+                Editora editorra = new Editora();
 
                 editorra.setId_editora(resultado.getInt("Id_editora"));
                 editorra.setNome(resultado.getString("nome"));

@@ -25,7 +25,8 @@ public class ControleUsuario {
     }
 
     private boolean alterarUsuario(Usuario usuario) {
-        String sql = "UPDATE Usuarios SET nome=?,dataNasc=?,cpf=?,email=?,senha=?,status=?,suspensoAte=?,codigoUsuario=?,tipo=?,logradouro=? WHERE id=?;";
+        String sql = "UPDATE Usuarios SET nome=?,dataNasc=?,cpf=?,email=?,senha=?,status=?,suspensoAte=?,codigoUsuario=?,"
+                + "tipo=?,logradouro=? WHERE id=?;";
 
         try {
             PreparedStatement comando = conexao.prepareStatement(sql);

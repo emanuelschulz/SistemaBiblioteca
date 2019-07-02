@@ -5,7 +5,11 @@
  */
 package View;
 
+import Model.Autor;
+import Model.Editora;
 import Model.Livro;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -47,8 +51,6 @@ public class CadastroLivros extends javax.swing.JFrame {
         jtfAcervo = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jtfGenero = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        jtfCDU = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jsNumAutores = new javax.swing.JSpinner();
         jcbOnline = new javax.swing.JCheckBox();
@@ -56,15 +58,18 @@ public class CadastroLivros extends javax.swing.JFrame {
         jbtAdicionar = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jlstAutoresSelet = new javax.swing.JList<>();
-        jLabel23 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jtbAutorEmail = new javax.swing.JTable();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jtbEditora = new javax.swing.JTable();
         jbtnFechar = new javax.swing.JButton();
         jbtSalvarCadLivros = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jlistAutores = new javax.swing.JList<>();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jlistEditora = new javax.swing.JList<>();
+        jbNovoAutor = new javax.swing.JButton();
+        jbNovaEditora = new javax.swing.JButton();
+        jtfPesqAutores = new javax.swing.JTextField();
+        jtfPesqEditora = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -105,9 +110,6 @@ public class CadastroLivros extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel20.setText("GÊNERO:");
 
-        jLabel21.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel21.setText("CDU:");
-
         jLabel22.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel22.setText("QNT. AUTORES:");
 
@@ -122,61 +124,6 @@ public class CadastroLivros extends javax.swing.JFrame {
         jLabel18.setText("SUBTITULO:");
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jScrollPane4.setViewportView(jlstAutoresSelet);
-
-        jLabel23.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel23.setText("AUTORES SELECIONADOS");
-
-        jtbAutorEmail.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "ID", "AUTOR"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(jtbAutorEmail);
-
-        jtbEditora.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "ID", "EDITORA"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane5.setViewportView(jtbEditora);
 
         jbtnFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/biblioteca_guido/imagem/close.png"))); // NOI18N
         jbtnFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -193,14 +140,32 @@ public class CadastroLivros extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setBorder(javax.swing.BorderFactory.createTitledBorder("Autores Selecionados"));
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jlistAutores.setBorder(javax.swing.BorderFactory.createTitledBorder("Autores"));
+        jScrollPane2.setViewportView(jlistAutores);
+
+        jlistEditora.setBorder(javax.swing.BorderFactory.createTitledBorder("Editora"));
+        jlistEditora.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane6.setViewportView(jlistEditora);
+
+        jbNovoAutor.setText("Novo");
+
+        jbNovaEditora.setText("Novo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSeparator1)
+                    .addComponent(jLabel12)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +173,7 @@ public class CadastroLivros extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel22))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(80, 80, 80)
+                                    .addGap(132, 132, 132)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(layout.createSequentialGroup()
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,11 +182,8 @@ public class CadastroLivros extends javax.swing.JFrame {
                                             .addGap(83, 83, 83)
                                             .addComponent(jbtAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel21)
-                                            .addGap(18, 18, 18)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jtfCDU, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jsNumAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(jsNumAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(125, 125, 125)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
@@ -251,20 +213,28 @@ public class CadastroLivros extends javax.swing.JFrame {
                                 .addGap(32, 32, 32)))
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jbtSalvarCadLivros, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jbtnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel23)))
-                    .addComponent(jLabel12))
-                .addGap(10, 10, 10))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jbtnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jbtSalvarCadLivros, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jtfPesqAutores)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jbNovoAutor)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jtfPesqEditora)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jbNovaEditora)))))))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,11 +277,7 @@ public class CadastroLivros extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtfGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel20))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtfCDU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel21))
-                        .addGap(10, 10, 10)
+                        .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -322,20 +288,25 @@ public class CadastroLivros extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jcbBraile))
                             .addComponent(jbtAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jbNovoAutor)
+                            .addComponent(jbNovaEditora)
+                            .addComponent(jtfPesqAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfPesqEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel23)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbtnFechar)
-                            .addComponent(jbtSalvarCadLivros)))
-                    .addComponent(jSeparator2))
-                .addGap(30, 30, 30))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbtSalvarCadLivros)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jbtnFechar))
+                            .addComponent(jScrollPane1))))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -346,11 +317,19 @@ public class CadastroLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfTituloActionPerformed
 
     private void jbtSalvarCadLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalvarCadLivrosActionPerformed
-       int editora = (int) jtbEditora.getValueAt(0, jtbEditora.getSelectedRow());
+       int editora = (int) ((Editora) jlistEditora.getSelectedValue()).getId_editora();
         
-        Livro livro = new Livro (0, jtfTitulo.getText(), jtfSubtitulo.getText(), jtfISBN.getText(), jcbOnline.isSelected(), jcbBraile.isSelected(), jtfGenero.getText(), Integer.parseInt(jtfNumPaginas.getText()), editora, true);
+       Livro livro = new Livro (0, jtfTitulo.getText(), 
+               jtfSubtitulo.getText(), 
+               jtfISBN.getText(), 
+               jcbOnline.isSelected(), 
+               jcbBraile.isSelected(), 
+               jtfGenero.getText(), 
+               Integer.parseInt(jtfNumPaginas.getText()), 
+               editora, 
+               true);
         
-        
+        List<Object> autores = jlistAutores.getSelectedValuesList();
     }//GEN-LAST:event_jbtSalvarCadLivrosActionPerformed
 
     private void jtfSubtituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSubtituloActionPerformed
@@ -406,30 +385,31 @@ public class CadastroLivros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton jbNovaEditora;
+    private javax.swing.JButton jbNovoAutor;
     private javax.swing.JButton jbtAdicionar;
     private javax.swing.JButton jbtSalvarCadLivros;
     private javax.swing.JButton jbtnFechar;
     private javax.swing.JCheckBox jcbBraile;
     private javax.swing.JCheckBox jcbOnline;
-    private javax.swing.JList<String> jlstAutoresSelet;
+    private javax.swing.JList<Object> jlistAutores;
+    private javax.swing.JList<Object> jlistEditora;
     private javax.swing.JSpinner jsNumAutores;
-    private javax.swing.JTable jtbAutorEmail;
-    private javax.swing.JTable jtbEditora;
     private javax.swing.JTextField jtfAcervo;
     private javax.swing.JTextField jtfAno;
-    private javax.swing.JTextField jtfCDU;
     private javax.swing.JTextField jtfEdicao;
     private javax.swing.JTextField jtfGenero;
     private javax.swing.JTextField jtfISBN;
     private javax.swing.JTextField jtfNumPaginas;
+    private javax.swing.JTextField jtfPesqAutores;
+    private javax.swing.JTextField jtfPesqEditora;
     private javax.swing.JTextField jtfSubtitulo;
     private javax.swing.JTextField jtfTitulo;
     // End of variables declaration//GEN-END:variables

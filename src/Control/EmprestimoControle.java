@@ -20,7 +20,7 @@ public class EmprestimoControle {
         String sql = "insert into livro_has_emprestimo (livro_id)"
                 + "values (?); ";
         try {
-            PreparedStatement comando = conexao.prepareStatement(sql);
+            PreparedStatement comando = DB.connection().prepareStatement(sql);
             comando.setInt(1, emprestimo.getId_livro());
 
             comando.executeUpdate();
@@ -35,7 +35,7 @@ public class EmprestimoControle {
         String sql = "insert into emprestimo (dataEmprestimo,dataDevolucao)"
                 + "values (?); ";
         try {
-            PreparedStatement comando = conexao.prepareStatement(sql);
+            PreparedStatement comando = DB.connection().prepareStatement(sql);
             comando.setInt(1, emprestimo.getId_livro());
             comando.setDate(2, (Date) usuario.getData_nasc());
 
