@@ -1,8 +1,7 @@
-
 package Model;
 
-
 public class Livro {
+
     private int Id_livro;
     private String titulo;
     private String subTitulo;
@@ -126,5 +125,4 @@ public class Livro {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
 }
