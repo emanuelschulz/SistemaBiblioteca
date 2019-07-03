@@ -1,6 +1,9 @@
 package View;
 
 import Control.ControleLivro;
+import Model.Livro;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,6 +17,40 @@ public class PesquisaLivro extends javax.swing.JFrame {
     public PesquisaLivro() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    
+    private void preencheTabela(ArrayList<Livro> livros) {
+        DefaultTableModel model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+            
+        };
+        model.setColumnIdentifiers(new String [] {"ISBN", "Título", "Subtítulo", "Ano", "Edição", "Editora", "Qtd. Páginas", "Gênero"});        
+        
+        for (Livro livro : livros) {
+            ArrayList<Object> row = new ArrayList<>();
+            
+            row.add(livro.getIsbn());
+            row.add(livro.getTitulo());
+            row.add(livro.getSubTitulo());
+            row.add(livro.getAno());
+            row.add(livro.getEdicao());
+            row.add(livro.getId_editora());
+            row.add(livro.getNumero_de_paginas());
+            row.add(livro.getGenero());
+            
+            model.addRow(row.toArray());
+        }
+        
+        jtbLivros.setModel(model);
+    }
+    
+    private void pesquisar() {
+        if (jrbNomeLivro.isSelected()) {
+            preencheTabela(cl.pesquisarLivroPorNome(jtfFiltro.getText()));
+        }
     }
 
     /**
@@ -29,14 +66,14 @@ public class PesquisaLivro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbLivros = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        jtfFiltro = new javax.swing.JTextField();
         jbPesquisar = new javax.swing.JButton();
         jbtnFechar = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
+        jrbNomeLivro = new javax.swing.JRadioButton();
+        jrbNomeAutor = new javax.swing.JRadioButton();
+        jrbEditora = new javax.swing.JRadioButton();
+        jrbAno = new javax.swing.JRadioButton();
+        jrbIsbn = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,6 +113,12 @@ public class PesquisaLivro extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtbLivros);
 
+        jtfFiltro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfFiltroKeyReleased(evt);
+            }
+        });
+
         jbPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/biblioteca_guido/imagem/Pesquisar30x31.png"))); // NOI18N
         jbPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,20 +134,21 @@ public class PesquisaLivro extends javax.swing.JFrame {
             }
         });
 
-        btnGroupTipos.add(jRadioButton1);
-        jRadioButton1.setText("Nome do livro");
+        btnGroupTipos.add(jrbNomeLivro);
+        jrbNomeLivro.setSelected(true);
+        jrbNomeLivro.setText("Nome do livro");
 
-        btnGroupTipos.add(jRadioButton2);
-        jRadioButton2.setText("Nome do Autor");
+        btnGroupTipos.add(jrbNomeAutor);
+        jrbNomeAutor.setText("Nome do Autor");
 
-        btnGroupTipos.add(jRadioButton3);
-        jRadioButton3.setText("Editora");
+        btnGroupTipos.add(jrbEditora);
+        jrbEditora.setText("Editora");
 
-        btnGroupTipos.add(jRadioButton4);
-        jRadioButton4.setText("Ano de publicação");
+        btnGroupTipos.add(jrbAno);
+        jrbAno.setText("Ano de publicação");
 
-        btnGroupTipos.add(jRadioButton5);
-        jRadioButton5.setText("ISBN");
+        btnGroupTipos.add(jrbIsbn);
+        jrbIsbn.setText("ISBN");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Pesquisar por:");
@@ -121,20 +165,20 @@ public class PesquisaLivro extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtfFiltro, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton1)
+                                .addComponent(jrbNomeLivro)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton2)
+                                .addComponent(jrbNomeAutor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton3)
+                                .addComponent(jrbEditora)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton4)
+                                .addComponent(jrbAno)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton5)))
+                                .addComponent(jrbIsbn)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jbPesquisar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,24 +188,26 @@ public class PesquisaLivro extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jRadioButton3)
-                            .addComponent(jRadioButton4)
-                            .addComponent(jRadioButton5)
+                            .addComponent(jrbNomeLivro)
+                            .addComponent(jrbNomeAutor)
+                            .addComponent(jrbEditora)
+                            .addComponent(jrbAno)
+                            .addComponent(jrbIsbn)
                             .addComponent(jLabel2))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jbtnFechar)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 205, Short.MAX_VALUE)
+                                .addComponent(jbtnFechar))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbPesquisar)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -176,8 +222,14 @@ public class PesquisaLivro extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnFecharActionPerformed
 
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
-        
+        pesquisar();
     }//GEN-LAST:event_jbPesquisarActionPerformed
+
+    private void jtfFiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfFiltroKeyReleased
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            pesquisar();
+        }
+    }//GEN-LAST:event_jtfFiltroKeyReleased
 
     /**
      * @param args the command line arguments
@@ -218,15 +270,15 @@ public class PesquisaLivro extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGroupTipos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbtnFechar;
+    private javax.swing.JRadioButton jrbAno;
+    private javax.swing.JRadioButton jrbEditora;
+    private javax.swing.JRadioButton jrbIsbn;
+    private javax.swing.JRadioButton jrbNomeAutor;
+    private javax.swing.JRadioButton jrbNomeLivro;
     private javax.swing.JTable jtbLivros;
+    private javax.swing.JTextField jtfFiltro;
     // End of variables declaration//GEN-END:variables
 }

@@ -34,8 +34,9 @@ public class ControleLivro {
     public ArrayList<Livro> pesquisarLivroPorNome(String nome) {
         ArrayList<Livro> pesq = new ArrayList<>();
 
-        String sql = "Select * from livro where nome like ?%";
+        String sql = "Select * from livro where trim(lower(titulo)) like ?;";
         try {
+            nome = nome.trim().toLowerCase() + "%";
             PreparedStatement comando = DB.connection().prepareStatement(sql);
             comando.setString(1, nome);
             ResultSet resultado = comando.executeQuery();
@@ -57,7 +58,8 @@ public class ControleLivro {
 
             return pesq;
         } catch (Exception e) {
-            System.out.println("deu erro" + this.getClass().getName() + ".pesquisarLivroPorNome()");
+            System.out.println("deu erro " + this.getClass().getName() + ".pesquisarLivroPorNome()");
+            e.printStackTrace();
             return null;
         }
     }
