@@ -40,6 +40,7 @@ public class CadastroEmprestimos extends javax.swing.JFrame {
         jbtnFechar = new javax.swing.JButton();
         jbtSalvar = new javax.swing.JButton();
 
+        setTitle("Cadastro de Empréstimo");
         setName("jfCadEmprestimo"); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N

@@ -192,6 +192,7 @@
     </Container>
   </NonVisualComponents>
   <Properties>
+    <Property name="title" type="java.lang.String" value="Cadastro de Livros"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
       <Color id="Cursor em Forma de M&#xe3;o"/>
     </Property>
@@ -289,7 +290,7 @@
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jScrollPane2" min="-2" pref="207" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
-                                              <Component id="jtfPesqAutores" min="-2" pref="133" max="-2" attributes="0"/>
+                                              <Component id="jtfPesqAutores" max="32767" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jbNovoAutor" min="-2" max="-2" attributes="0"/>
                                           </Group>
@@ -298,7 +299,7 @@
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jScrollPane6" alignment="1" min="-2" pref="207" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jtfPesqEditora" min="-2" pref="133" max="-2" attributes="0"/>
+                                              <Component id="jtfPesqEditora" max="32767" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jbNovaEditora" min="-2" max="-2" attributes="0"/>
                                           </Group>

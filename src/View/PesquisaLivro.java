@@ -50,6 +50,10 @@ public class PesquisaLivro extends javax.swing.JFrame {
     private void pesquisar() {
         if (jrbNomeLivro.isSelected()) {
             preencheTabela(cl.pesquisarLivroPorNome(jtfFiltro.getText()));
+        } else if (jrbIsbn.isSelected()) {
+            preencheTabela(cl.pesquisarLivroPorIsbn(jtfFiltro.getText()));
+        } else if (jrbAno.isSelected()) {
+            preencheTabela(cl.pesquisarLivroPorAno(Integer.parseInt(jtfFiltro.getText()));
         }
     }
 
@@ -70,12 +74,11 @@ public class PesquisaLivro extends javax.swing.JFrame {
         jbPesquisar = new javax.swing.JButton();
         jbtnFechar = new javax.swing.JButton();
         jrbNomeLivro = new javax.swing.JRadioButton();
-        jrbNomeAutor = new javax.swing.JRadioButton();
-        jrbEditora = new javax.swing.JRadioButton();
         jrbAno = new javax.swing.JRadioButton();
         jrbIsbn = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
 
+        setTitle("Pesquisar Livros");
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setName("jfPesqLivros"); // NOI18N
 
@@ -137,12 +140,6 @@ public class PesquisaLivro extends javax.swing.JFrame {
         jrbNomeLivro.setSelected(true);
         jrbNomeLivro.setText("Nome do livro");
 
-        btnGroupTipos.add(jrbNomeAutor);
-        jrbNomeAutor.setText("Nome do Autor");
-
-        btnGroupTipos.add(jrbEditora);
-        jrbEditora.setText("Editora");
-
         btnGroupTipos.add(jrbAno);
         jrbAno.setText("Ano de publicação");
 
@@ -170,14 +167,11 @@ public class PesquisaLivro extends javax.swing.JFrame {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jrbNomeLivro)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jrbNomeAutor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jrbEditora)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(jrbAno)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jrbIsbn)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jrbIsbn)
+                                .addGap(219, 219, 219)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jbPesquisar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,8 +190,6 @@ public class PesquisaLivro extends javax.swing.JFrame {
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jrbNomeLivro)
-                            .addComponent(jrbNomeAutor)
-                            .addComponent(jrbEditora)
                             .addComponent(jrbAno)
                             .addComponent(jrbIsbn)
                             .addComponent(jLabel2))
@@ -273,9 +265,7 @@ public class PesquisaLivro extends javax.swing.JFrame {
     private javax.swing.JButton jbPesquisar;
     private javax.swing.JButton jbtnFechar;
     private javax.swing.JRadioButton jrbAno;
-    private javax.swing.JRadioButton jrbEditora;
     private javax.swing.JRadioButton jrbIsbn;
-    private javax.swing.JRadioButton jrbNomeAutor;
     private javax.swing.JRadioButton jrbNomeLivro;
     private javax.swing.JTable jtbLivros;
     private javax.swing.JTextField jtfFiltro;
