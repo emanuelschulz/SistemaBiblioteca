@@ -63,6 +63,70 @@ public class ControleLivro {
             return null;
         }
     }
+    
+    public ArrayList<Livro> pesquisarLivroPorAno(int ano) {
+        ArrayList<Livro> pesq = new ArrayList<>();
+
+        String sql = "Select * from livro where ano = ?;";
+        try {
+            PreparedStatement comando = DB.connection().prepareStatement(sql);
+            comando.setString(1, ano);
+            ResultSet resultado = comando.executeQuery();
+            while (resultado.next()) {
+                Livro liv = new Livro(resultado.getInt("id"),
+                        resultado.getString("titulo"),
+                        resultado.getString("subtitulo"),
+                        resultado.getString("isbn"),
+                        resultado.getBoolean("disponivelOnline"),
+                        resultado.getBoolean("braile"),
+                        resultado.getString("genero"),
+                        resultado.getInt("paginas"),
+                        resultado.getInt("editora_id"),
+                        resultado.getInt("ano"),
+                        resultado.getInt("edicao"),
+                        resultado.getBoolean("Status"));
+                pesq.add(liv);
+            }
+
+            return pesq;
+        } catch (Exception e) {
+            System.out.println("deu erro " + this.getClass().getName() + ".pesquisarLivroPorNome()");
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public ArrayList<Livro> pesquisarLivroPorIsbn(String Isbn) {
+        ArrayList<Livro> pesq = new ArrayList<>();
+
+        String sql = "Select * from livro where isbn = ?;";
+        try {
+            PreparedStatement comando = DB.connection().prepareStatement(sql);
+            comando.setString(1, ano);
+            ResultSet resultado = comando.executeQuery();
+            while (resultado.next()) {
+                Livro liv = new Livro(resultado.getInt("id"),
+                        resultado.getString("titulo"),
+                        resultado.getString("subtitulo"),
+                        resultado.getString("isbn"),
+                        resultado.getBoolean("disponivelOnline"),
+                        resultado.getBoolean("braile"),
+                        resultado.getString("genero"),
+                        resultado.getInt("paginas"),
+                        resultado.getInt("editora_id"),
+                        resultado.getInt("ano"),
+                        resultado.getInt("edicao"),
+                        resultado.getBoolean("Status"));
+                pesq.add(liv);
+            }
+
+            return pesq;
+        } catch (Exception e) {
+            System.out.println("deu erro " + this.getClass().getName() + ".pesquisarLivroPorNome()");
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public ArrayList<Livro> getTudo() {
         ArrayList<Livro> pesq = new ArrayList<>();

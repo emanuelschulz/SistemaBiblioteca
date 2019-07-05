@@ -40,7 +40,7 @@ public class CadastroExemplares extends javax.swing.JFrame {
         jbtnFechar = new javax.swing.JButton();
         jbtSalvarExemp = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro de Exemplares");
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N

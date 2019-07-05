@@ -9,12 +9,12 @@ package View;
  *
  * @author Sirlei
  */
-public class CadastroEmprestimo extends javax.swing.JFrame {
+public class CadastroEmprestimos extends javax.swing.JFrame {
 
     /**
      * Creates new form CadastroEmprestimos
      */
-    public CadastroEmprestimo() {
+    public CadastroEmprestimos() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -40,7 +40,7 @@ public class CadastroEmprestimo extends javax.swing.JFrame {
         jbtnFechar = new javax.swing.JButton();
         jbtSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro de Empréstimo");
         setName("jfCadEmprestimo"); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -174,12 +174,9 @@ public class CadastroEmprestimo extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbtnFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(30, 30, 30))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbtSalvar)
-                        .addGap(30, 30, 30))))
+                    .addComponent(jbtnFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtSalvar))
+                .addGap(30, 30, 30))
         );
 
         pack();
