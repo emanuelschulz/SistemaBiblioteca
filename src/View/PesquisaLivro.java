@@ -53,7 +53,7 @@ public class PesquisaLivro extends javax.swing.JFrame {
         } else if (jrbIsbn.isSelected()) {
             preencheTabela(cl.pesquisarLivroPorIsbn(jtfFiltro.getText()));
         } else if (jrbAno.isSelected()) {
-            preencheTabela(cl.pesquisarLivroPorAno(Integer.parseInt(jtfFiltro.getText()));
+            preencheTabela(cl.pesquisarLivroPorAno(Integer.parseInt(jtfFiltro.getText())));
         }
     }
 
