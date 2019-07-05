@@ -10,6 +10,7 @@ import Model.Usuario;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -282,8 +283,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
         try {
             controle = new ControleUsuario();
             controle.GravarUsuario(usuario);
+            JOptionPane.showMessageDialog(rootPane, "Sucesso");
         } catch (SQLException ex) {
             Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, "Deu ruim");
         }
 
     }//GEN-LAST:event_jbtnSalvarActionPerformed
