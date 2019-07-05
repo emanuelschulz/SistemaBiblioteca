@@ -80,15 +80,15 @@ public class CadastroLivros extends javax.swing.JFrame {
         jbtnExcluir = new javax.swing.JButton();
         jbtSalvarCadLivros = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jlistAutores = new javax.swing.JList<>();
+        jlistAutores = new javax.swing.JList<Object>();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jlistEditora = new javax.swing.JList<>();
+        jlistEditora = new javax.swing.JList<Object>();
         jbNovoAutor = new javax.swing.JButton();
         jbNovaEditora = new javax.swing.JButton();
         jtfPesqAutores = new javax.swing.JTextField();
         jtfPesqEditora = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jlistAutoresSelect = new javax.swing.JList<>();
+        jlistAutoresSelect = new javax.swing.JList<Object>();
 
         jbInAutor.setText("Cadastrar Autor");
         jbInAutor.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +206,6 @@ public class CadastroLivros extends javax.swing.JFrame {
             .addComponent(jpDialEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -318,10 +317,9 @@ public class CadastroLivros extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
+                                        .addGap(20, 20, 20)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(19, 19, 19)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
