@@ -76,7 +76,6 @@ public class PesquisaLivro extends javax.swing.JFrame {
         jrbIsbn = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setName("jfPesqLivros"); // NOI18N
 

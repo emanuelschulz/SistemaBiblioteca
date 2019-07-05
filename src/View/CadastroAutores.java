@@ -40,7 +40,6 @@ public class CadastroAutores extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jftfAnoNasc = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setName("jfCadAutores"); // NOI18N
 

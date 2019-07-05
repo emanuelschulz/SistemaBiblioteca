@@ -48,7 +48,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jbtnFechar = new javax.swing.JButton();
         jLabel36 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         txtCPF.addActionListener(new java.awt.event.ActionListener() {
