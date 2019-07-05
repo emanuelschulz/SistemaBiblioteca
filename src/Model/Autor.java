@@ -1,16 +1,14 @@
 package Model;
 
-import java.util.Date;
-
-public class AutorModelo {
+public class Autor {
 
     private int Id_autor;
-    private Date ano_nasc;
+    private String ano_nasc;
     private String nome;
     private String email;
     private boolean status;
 
-    public AutorModelo(int Id_autor, Date ano_nasc, String nome, String email, boolean status) {
+    public Autor(int Id_autor, String ano_nasc, String nome, String email, boolean status) {
         this.Id_autor = Id_autor;
         this.ano_nasc = ano_nasc;
         this.nome = nome;
@@ -18,8 +16,8 @@ public class AutorModelo {
         this.status = status;
     }
 
-    public AutorModelo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Autor() {
+        
     }
 
     public int getId_autor() {
@@ -30,11 +28,11 @@ public class AutorModelo {
         this.Id_autor = Id_autor;
     }
 
-    public Date getAnoNasc() {
+    public String getAnoNasc() {
         return this.ano_nasc;
     }
 
-    public void setAno_nasc(Date ano_nasc) {
+    public void setAno_nasc(String ano_nasc) {
         this.ano_nasc = ano_nasc;
     }
 
@@ -61,6 +59,9 @@ public class AutorModelo {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
 
+    @Override
+    public String toString() {
+        return this.nome + " ║ " + this.ano_nasc;
+    }        
 }
