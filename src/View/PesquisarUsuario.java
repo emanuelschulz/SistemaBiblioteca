@@ -37,6 +37,7 @@ public class PesquisarUsuario extends javax.swing.JFrame {
         jbtnFechar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
+        setTitle("Pesquisar Usuário");
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setName("jfPesqUSUARIOS"); // NOI18N
 

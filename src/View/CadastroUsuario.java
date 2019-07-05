@@ -47,6 +47,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jbtnSalvar = new javax.swing.JButton();
         jbtnFechar = new javax.swing.JButton();
 
+        setTitle("Cadastro de Usuário");
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jtfCPF1.addActionListener(new java.awt.event.ActionListener() {

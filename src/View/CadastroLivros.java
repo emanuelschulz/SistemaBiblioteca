@@ -206,6 +206,7 @@ public class CadastroLivros extends javax.swing.JFrame {
             .addComponent(jpDialEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        setTitle("Cadastro de Livros");
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
