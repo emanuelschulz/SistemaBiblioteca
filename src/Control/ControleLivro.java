@@ -70,7 +70,7 @@ public class ControleLivro {
         String sql = "Select * from livro where ano = ?;";
         try {
             PreparedStatement comando = DB.connection().prepareStatement(sql);
-            comando.setString(1, ano);
+            comando.setInt(1, ano);
             ResultSet resultado = comando.executeQuery();
             while (resultado.next()) {
                 Livro liv = new Livro(resultado.getInt("id"),
@@ -102,7 +102,7 @@ public class ControleLivro {
         String sql = "Select * from livro where isbn = ?;";
         try {
             PreparedStatement comando = DB.connection().prepareStatement(sql);
-            comando.setString(1, ano);
+            comando.setString(1, Isbn);
             ResultSet resultado = comando.executeQuery();
             while (resultado.next()) {
                 Livro liv = new Livro(resultado.getInt("id"),
