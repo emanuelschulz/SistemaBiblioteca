@@ -7,19 +7,30 @@ package View;
 
 import Control.ControleAutor;
 import Model.Autor;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Sirlei
  */
 public class CadastroAutores extends javax.swing.JFrame {
+
     Control.ControleAutor ca = new ControleAutor();
+
     /**
      * Creates new form CadastroAutores
      */
     public CadastroAutores() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+
+    private boolean ValidaCampo() {
+        if (jtfAutor.getText().trim().equals("")) {
+            JOptionPane.showConfirmDialog(this, "Informe o nome do produto!", "Alerta", JOptionPane.WARNING_MESSAGE);
+            jtfAutor.requestFocus();
+        }
+        return false;
     }
 
     /**
@@ -134,6 +145,7 @@ public class CadastroAutores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void jbtSalvarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalvarAutorActionPerformed
         Autor autor = new Autor(0, jftfAnoNasc.getValue().toString(), jtfAutor.getText(), "", true);
         ca.gravarAutor(autor);
@@ -146,7 +158,7 @@ public class CadastroAutores extends javax.swing.JFrame {
     private void jbtnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnFecharActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        
+
     }//GEN-LAST:event_jbtnFecharActionPerformed
 
     /**
