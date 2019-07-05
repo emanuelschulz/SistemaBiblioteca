@@ -94,15 +94,10 @@
               <Component id="jScrollPane1" min="-2" pref="188" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jbtnFechar" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jbtSalvar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jbtnFechar" max="32767" attributes="0"/>
+                  <Component id="jbtSalvar" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -189,7 +189,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        CadastroEmprestimo cadEmprestimo = new CadastroEmprestimo();
+        CadastroEmprestimos cadEmprestimo = new CadastroEmprestimos();
         cadEmprestimo.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
