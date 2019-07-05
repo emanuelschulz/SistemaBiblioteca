@@ -5,7 +5,11 @@
  */
 package View;
 
+import Control.ControleUsuario;
 import Model.Usuario;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -36,7 +40,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         radioDiscente = new javax.swing.JRadioButton();
         jLabel33 = new javax.swing.JLabel();
-        radiioDocente = new javax.swing.JRadioButton();
+        radioDocente = new javax.swing.JRadioButton();
         jLabel34 = new javax.swing.JLabel();
         txtCodUsuario = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
@@ -74,26 +78,26 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel33.setText("CPF:");
 
-        radiioDocente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        radiioDocente.setText("DOCENTE");
-        radiioDocente.addItemListener(new java.awt.event.ItemListener() {
+        radioDocente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        radioDocente.setText("DOCENTE");
+        radioDocente.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                radiioDocenteItemStateChanged(evt);
+                radioDocenteItemStateChanged(evt);
             }
         });
-        radiioDocente.addAncestorListener(new javax.swing.event.AncestorListener() {
+        radioDocente.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-                radiioDocenteAncestorMoved(evt);
+                radioDocenteAncestorMoved(evt);
             }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                radiioDocenteAncestorAdded(evt);
+                radioDocenteAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        radiioDocente.addActionListener(new java.awt.event.ActionListener() {
+        radioDocente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radiioDocenteActionPerformed(evt);
+                radioDocenteActionPerformed(evt);
             }
         });
 
@@ -137,47 +141,49 @@ public class CadastroUsuario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(jLabel33)
                         .addGap(18, 18, 18)
                         .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel32)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtCodUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(32, 32, 32)
-                            .addComponent(jLabel34)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel37)
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jbtnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jbtnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel31)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(32, 32, 32)
+                                    .addComponent(jLabel34)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel37)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jbtnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jbtnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addComponent(jLabel35))
-                            .addComponent(jLabel36))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(radiioDocente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(radioDiscente)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtNome))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(69, 69, 69)
+                                        .addComponent(jLabel35))
+                                    .addComponent(jLabel36))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(radioDocente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(radioDiscente))
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -189,7 +195,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radiioDocente)
+                    .addComponent(radioDocente)
                     .addComponent(radioDiscente)
                     .addComponent(jLabel36))
                 .addGap(10, 10, 10)
@@ -233,39 +239,52 @@ public class CadastroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void radiioDocenteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radiioDocenteItemStateChanged
+    private void radioDocenteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_radioDocenteItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_radiioDocenteItemStateChanged
+    }//GEN-LAST:event_radioDocenteItemStateChanged
 
-    private void radiioDocenteAncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_radiioDocenteAncestorMoved
+    private void radioDocenteAncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_radioDocenteAncestorMoved
         // TODO add your handling code here:
-    }//GEN-LAST:event_radiioDocenteAncestorMoved
+    }//GEN-LAST:event_radioDocenteAncestorMoved
 
-    private void radiioDocenteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_radiioDocenteAncestorAdded
+    private void radioDocenteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_radioDocenteAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_radiioDocenteAncestorAdded
+    }//GEN-LAST:event_radioDocenteAncestorAdded
 
-    private void radiioDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radiioDocenteActionPerformed
+    private void radioDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioDocenteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_radiioDocenteActionPerformed
+    }//GEN-LAST:event_radioDocenteActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void jbtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSalvarActionPerformed
-       // aqui vai cadastrar o usuário
-       
-       
-       Usuario usuario = new Usuario();
-       usuario.setNome(this.txtNome.toString());
-       usuario.setCpf(this.txtCPF.toString());
-       usuario.setLogradouro(this.txtEndereco.toString());
-       usuario.setCodigoUsuario(this.txtCodUsuario.toString());
-       usuario.setEmail(this.txtEmail.toString());
+        // aqui vai cadastrar o usuário
+
+        Usuario usuario = new Usuario();
+        usuario.setNome(this.txtNome.toString());
+        usuario.setCpf(this.txtCPF.toString());
+        usuario.setLogradouro(this.txtEndereco.toString());
+        usuario.setCodigoUsuario(this.txtCodUsuario.toString());
+        usuario.setEmail(this.txtEmail.toString());
         
+        if (this.radioDiscente.isSelected()) {
+            usuario.setTipo("Discente");
+        }
         
-        
+        if (this.radioDocente.isSelected()) {
+            usuario.setTipo("Docente");
+        }
+
+        ControleUsuario controle;
+        try {
+            controle = new ControleUsuario();
+            controle.GravarUsuario(usuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jbtnSalvarActionPerformed
 
     private void jbtnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnFecharActionPerformed
@@ -318,8 +337,8 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JButton jbtnFechar;
     private javax.swing.JButton jbtnSalvar;
-    private javax.swing.JRadioButton radiioDocente;
     private javax.swing.JRadioButton radioDiscente;
+    private javax.swing.JRadioButton radioDocente;
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCodUsuario;
     private javax.swing.JTextField txtEmail;
