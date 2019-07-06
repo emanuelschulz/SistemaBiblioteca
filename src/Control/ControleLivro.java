@@ -154,7 +154,8 @@ public class ControleLivro {
             return pesq;
         } catch (Exception e) {
             System.out.println("deu erro" + this.getClass().getName() + ".getTudo()");
-            return null;
+            e.printStackTrace();
+            return null;            
         }
     }
 
