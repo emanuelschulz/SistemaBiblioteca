@@ -201,7 +201,15 @@ public class CadastroEmprestimos extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtPesquisarActionPerformed
 
     private void jbtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalvarActionPerformed
-        livros.get(jtbLivros.getSelectedRow());
+        ArrayList<Livro> ls = new ArrayList<>();
+        
+        for (int selectedRow : jtbLivros.getSelectedRows()) {
+            ls.add(livros.get(selectedRow));
+            
+            
+        }
+        
+        
     }//GEN-LAST:event_jbtSalvarActionPerformed
 
     private void jtfPesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesquisarKeyReleased
