@@ -1,6 +1,6 @@
 package Model;
 
-public class Autor {
+public class ModeloAutor {
 
     private int Id_autor;
     private String ano_nasc;
@@ -8,7 +8,7 @@ public class Autor {
     private String email;
     private boolean status;
 
-    public Autor(int Id_autor, String ano_nasc, String nome, String email, boolean status) {
+    public ModeloAutor(int Id_autor, String ano_nasc, String nome, String email, boolean status) {
         this.Id_autor = Id_autor;
         this.ano_nasc = ano_nasc;
         this.nome = nome;
@@ -16,7 +16,7 @@ public class Autor {
         this.status = status;
     }
 
-    public Autor() {
+    public ModeloAutor() {
         
     }
 

@@ -3,7 +3,7 @@ package View;
 import Control.ControleAutor;
 import Control.ControleEditora;
 import Control.ControleLivro;
-import Model.Autor;
+import Model.ModeloAutor;
 import Model.Editora;
 import Model.Livro;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class CadastroLivros extends javax.swing.JFrame {
     ControleEditora ce = new ControleEditora();
     ControleLivro cl = new ControleLivro();
     
-    ArrayList<Autor> osAutores = new ArrayList<>();
+    ArrayList<ModeloAutor> osAutores = new ArrayList<>();
     /**
      * Creates new form CadastroLivros
      */
@@ -467,11 +467,11 @@ public class CadastroLivros extends javax.swing.JFrame {
                 true);
 
         List<Object> autores = jlistAutores.getSelectedValuesList();
-        cl.cadastrarLivro(livro, Arrays.copyOf(osAutores.toArray(), osAutores.size(), Autor[].class));
+        cl.cadastrarLivro(livro, Arrays.copyOf(osAutores.toArray(), osAutores.size(), ModeloAutor[].class));
     }//GEN-LAST:event_jbtSalvarCadLivrosActionPerformed
 
     private void jbtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExcluirActionPerformed
-        osAutores.removeAll((List<Autor>)(Object) jlistAutoresSelect.getSelectedValuesList());
+        osAutores.removeAll((List<ModeloAutor>)(Object) jlistAutoresSelect.getSelectedValuesList());
         jlistAutoresSelect.setListData(osAutores.toArray());
         jlistAutoresSelect.setSelectionInterval(0, osAutores.size()-1);
     }//GEN-LAST:event_jbtnExcluirActionPerformed
@@ -489,7 +489,7 @@ public class CadastroLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_jbNovaEditoraActionPerformed
 
     private void jbInAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInAutorActionPerformed
-        Autor a = new Autor(0, jftfAutAno.getValue().toString(), jtfAutNome.getText(), "", true);
+        ModeloAutor a = new ModeloAutor(0, jftfAutAno.getValue().toString(), jtfAutNome.getText(), "", true);
         ca.gravarAutor(a);
         jlistAutores.setListData(ca.listarAutor().toArray());
     }//GEN-LAST:event_jbInAutorActionPerformed
@@ -510,7 +510,7 @@ public class CadastroLivros extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfPesqEditoraKeyReleased
 
     private void jbtAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAdicionarActionPerformed
-        osAutores.addAll((List<Autor>)(Object) jlistAutores.getSelectedValuesList());
+        osAutores.addAll((List<ModeloAutor>)(Object) jlistAutores.getSelectedValuesList());
         jlistAutoresSelect.setListData(osAutores.toArray());
         jlistAutoresSelect.setSelectionInterval(0, osAutores.size()-1);
     }//GEN-LAST:event_jbtAdicionarActionPerformed
