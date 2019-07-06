@@ -1,6 +1,6 @@
 package Control;
 
-import Model.Autor;
+import Model.ModeloAutor;
 import Model.Livro;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ControleLivro {
 
-    public void cadastrarLivro(Livro l, Autor[] autores) {
+    public void cadastrarLivro(Livro l, ModeloAutor[] autores) {
         String sql = "insert into livro (titulo, subtitulo, isbn, edicao, braile, genero, paginas, disponivelOnline, editora_id, ano, status) values(?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement comando = DB.connection().prepareStatement(sql);
@@ -190,10 +190,10 @@ public class ControleLivro {
         }
     }
 
-    private void cadastrarNN(Autor[] autores) {
+    private void cadastrarNN(ModeloAutor[] autores) {
         String sql = "INSERT INTO livro_has_Autor (livro_id,Autor_id) VALUES ((select max(id) from livro), ?);";
 
-        for (Autor autor : autores) {
+        for (ModeloAutor autor : autores) {
             try {
                 PreparedStatement comando = DB.connection().prepareStatement(sql);
                 comando.setInt(1, autor.getId_autor());

@@ -6,7 +6,7 @@
 package View;
 
 import Control.ControleAutor;
-import Model.Autor;
+import Model.ModeloAutor;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  * @author Sirlei
  */
 public class CadastroAutores extends javax.swing.JFrame {
+    private  ModeloAutor autorSalvo;
 
     Control.ControleAutor ca = new ControleAutor();
 
@@ -25,13 +26,7 @@ public class CadastroAutores extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    private boolean ValidaCampo() {
-        if (jtfAutor.getText().trim().equals("")) {
-            JOptionPane.showConfirmDialog(this, "Informe o nome do produto!", "Alerta", JOptionPane.WARNING_MESSAGE);
-            jtfAutor.requestFocus();
-        }
-        return false;
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +44,7 @@ public class CadastroAutores extends javax.swing.JFrame {
         jbtSalvarAutor = new javax.swing.JButton();
         jbtnFechar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jftfAnoNasc = new javax.swing.JFormattedTextField();
+        jtfAnoNasc = new javax.swing.JFormattedTextField();
 
         setTitle("Cadastro de Autores");
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -86,7 +81,7 @@ public class CadastroAutores extends javax.swing.JFrame {
         });
 
         try {
-            jftfAnoNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
+            jtfAnoNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -108,7 +103,7 @@ public class CadastroAutores extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jtfAutor)
-                                    .addComponent(jftfAnoNasc, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
+                                    .addComponent(jtfAnoNasc, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
                                 .addGap(64, 64, 64)
                                 .addComponent(jbtSalvarAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
@@ -135,7 +130,7 @@ public class CadastroAutores extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jftfAnoNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtfAnoNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jbtSalvarAutor))
                 .addGap(18, 18, 18)
                 .addComponent(jbtnFechar)
@@ -145,10 +140,54 @@ public class CadastroAutores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+    private boolean ValidaCampo() {
+        if (jtfAutor.getText().trim().equals("")) {
+            JOptionPane.showConfirmDialog(this, "Informe o nome do Autor!", "Alerta", JOptionPane.WARNING_MESSAGE);
+            jtfAutor.requestFocus();
+        
+        return false;
+    }
+        if (jtfAnoNasc.getText().trim().equals("")) {
+            JOptionPane.showConfirmDialog(this, "Informe o nome do produto!", "Alerta", JOptionPane.WARNING_MESSAGE);
+            jtfAnoNasc.requestFocus();
+        
+        return false;
+    }    
+        
+        return true;
+    }
+    
+    private void  limparCampo(){
+    jtfAutor.setText("");
+    jtfAnoNasc.setText("");
+    this.autorSalvo = null;
+    
+    }
+    
     private void jbtSalvarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalvarAutorActionPerformed
-        Autor autor = new Autor(0, jftfAnoNasc.getValue().toString(), jtfAutor.getText(), "", true);
-        ca.gravarAutor(autor);
+if(ValidaCampo()) {
+ ControleAutor controle = new ControleAutor();
+ ModeloAutor autor;
+ if (this.autorSalvo != null){
+     autor = this.autorSalvo;
+ }else{
+    autor = new ModeloAutor();
+ }
+ 
+ autor.setNome(jtfAutor.getText());
+ autor.setAno_nasc(jtfAnoNasc.getText());
+ autor.setStatus(true);
+ 
+ boolean gravou = controle.gravarAutor(autor);
+ if(gravou) {
+     JOptionPane.showMessageDialog(this, "Sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+ limparCampo();
+ jtfAutor.requestFocus();
+ }else{
+     JOptionPane.showMessageDialog(this,"Erro","ERRO",JOptionPane.ERROR_MESSAGE );
+ }
+ 
+}
     }//GEN-LAST:event_jbtSalvarAutorActionPerformed
 
     private void jtfAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfAutorActionPerformed
@@ -156,7 +195,6 @@ public class CadastroAutores extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfAutorActionPerformed
 
     private void jbtnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnFecharActionPerformed
-        // TODO add your handling code here:
         this.dispose();
 
     }//GEN-LAST:event_jbtnFecharActionPerformed
@@ -203,7 +241,7 @@ public class CadastroAutores extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbtSalvarAutor;
     private javax.swing.JButton jbtnFechar;
-    private javax.swing.JFormattedTextField jftfAnoNasc;
+    private javax.swing.JFormattedTextField jtfAnoNasc;
     private javax.swing.JTextField jtfAutor;
     // End of variables declaration//GEN-END:variables
 }
